@@ -1,10 +1,23 @@
+import React from 'react'
+import { Routes, Route } from 'react-router-dom';
+import Home  from './pages/Home';
+import  WarehouseList  from './pages/WarehouseList';
+import  InventoryList  from './pages/InventoryList';
+import  PageNotFound  from './pages/PageNotFound';
+
 function App() {
   return (
-    <div className="bg-instock-graphite ">
-      <nav className="section py-4">
-        <p className="text-4xl text-instock-white">BrainStation: InStock</p>
-      </nav>
-    </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/warehouses" element={<WarehouseList />} >
+            <Route path="/warehouses/:id" element= {<WarehouseList />}  />
+          </Route>
+          <Route path="/inventory" element={<InventoryList />} >
+            <Route path="/inventory/:id" element= {<InventoryList />}/>
+          </Route>
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      
   )
 }
 
