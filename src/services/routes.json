@@ -1,0 +1,4 @@
+{
+    "warehouse": "/api/warehouse",
+    "inventory": "/api/inventory"
+}
