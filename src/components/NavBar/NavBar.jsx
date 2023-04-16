@@ -1,24 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '@assets/logos/InStock-Logo_1x.png'
 import NavItem from '@components/NavBar/NavItem'
 
 export default function NavBar() {
+
+  const [ActiveLink, setActiveLink] = useState('Warehouse')
+  const NavLinks = [
+    {
+      path: '/warehouse',
+      name: 'Warehouse',
+    },
+    {
+      path: '/inventory',
+      name: 'Inventory',
+    },
+  ]
+
   return (
-    <>
-      <div className="bg-instock-graphite ">
-        <nav className="section flex flex-col gap-4 py-4 md:flex-row justify-between items-center xl:px-24">
-          <section className="flex justify-center ">
-            <NavLink to="/">
-              <img className="w-24" src={logo} />
-            </NavLink>
-          </section>
-          <section className="flex text-instock-white md:w-56 justify-around">
-            <NavItem to='/warehouse' name='Warehouse'/>
-            <NavItem to='/inventory' name='Inventory'/>
-          </section>
-        </nav>
-      </div>
-    </>
+    <header className='pt-1 pb-16 bg-instock-graphite md:p-0'>
+      <nav className='flex flex-col items-center justify-between gap-4 py-4 section md:flex-row'>
+        <div className='flex justify-between'>
+          <NavLink to='/'>
+            <img className='w-24' src={logo} alt='instock-logo' />
+          </NavLink>
+        </div>
+        <div className='mt-2 flex w-full justify-center gap-4 md:w-56 md:gap-1 md:m-0'>
+          {NavLinks.map((link, index) => (
+            <NavItem
+              key={index}
+              to={link.path}
+              name={link.name}
+              active={ActiveLink}
+              setActiveLink={setActiveLink}
+            />
+          ))}
+        </div>
+      </nav>
+    </header>
   )
 }

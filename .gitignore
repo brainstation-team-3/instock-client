@@ -141,6 +141,8 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+*-lock.json
+*.yarn.lock
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
