@@ -5,6 +5,7 @@ import Warehouse from '@pages/Warehouse'
 import Inventory from '@pages/Inventory'
 import PageNotFound from '@pages/PageNotFound'
 import NavBar from '@components/NavBar/NavBar'
+import Footer from '@components/Footer/Footer'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/inventory" element={<Inventory />}/>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <Footer />
     </>
   )
 }
