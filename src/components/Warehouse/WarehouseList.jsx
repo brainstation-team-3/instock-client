@@ -5,7 +5,7 @@ import WarehouseListItem from './WarehouseListItem';
 function WarehouseList({ warehouseList }) {
 
   return (
-    <div className='divide-y divide-solid'> 
+    <div className='divide-y divide-solid section'> 
       <h1 className='text-2xl font-bold'>Warehouses</h1>
       <div>SEARCH BAR</div>
       {/* <Table /> */}
