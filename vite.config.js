@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: '@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
+      { find: '@assets', replacement: path.resolve(__dirname, './src/assets') },
       { find: '@components', replacement: path.resolve(__dirname, './src/components') },
       { find: '@pages', replacement: path.resolve(__dirname, './src/pages') },
       { find: '@services', replacement: path.resolve(__dirname, './src/services') },
