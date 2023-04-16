@@ -1,23 +1,22 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
-import WarehouseList from './pages/WarehouseList'
-import InventoryList from './pages/InventoryList'
-import PageNotFound from './pages/PageNotFound'
+import Home from '@pages/Home'
+import Warehouse from '@pages/Warehouse'
+import Inventory from '@pages/Inventory'
+import PageNotFound from '@pages/PageNotFound'
+import NavBar from '@components/NavBar/NavBar'
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='/warehouses' element={<WarehouseList />}>
-        <Route path='/warehouses/:id' element={<WarehouseList />} />
-      </Route>
-      <Route path='/inventory' element={<InventoryList />}>
-        <Route path='/inventory/:id' element={<InventoryList />} />
-      </Route>
-      <Route path='*' element={<PageNotFound />} />
-    </Routes>
-
+    <>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/warehouse" element={<Warehouse />}/>
+        <Route path="/inventory" element={<Inventory />}/>
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </>
   )
 }
 
