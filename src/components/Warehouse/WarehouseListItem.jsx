@@ -9,8 +9,8 @@ import chevron  from '@/assets/icons/chevron_right-24px.svg';
 
 function WarehouseListItem({ item }) {
   const { id, warehouse_name, address, city, country, contact_name, contact_phone, contact_email } = item;
-  return (
-  <div className='border-b-2 border-solid border-instock-cloud'>  
+  return (<>
+  <div className='border-b-2 border-solid border-instock-cloud'>
         <div className=' box-border p-4 md:px-9 flex  flex-wrap md:flex-nowrap md:gap-4 md:items-center md:justify-between w-full'>
           <div className='order-1 max-md:basis-1/2 md:basis-1/6 md:flex-none box-border p-2  md:px-0'>
             <p className='font-semibold text-mh4 md:text-h4 text-instock-slate md:hidden'>WAREHOUSE</p>
@@ -38,6 +38,29 @@ function WarehouseListItem({ item }) {
           </div>
         </div>
   </div>
+      <div className='py-4 flex flex-col flex-wrap h-52 w-full'>
+        <div className=' w-2/5 p-2'>
+          <p>WAREHOUSE</p>
+          <p>{warehouse_name}</p>
+        </div>
+        <div className=' w-2/5 p-2'>
+          <p>ADDRESS</p>
+          <p>{address}</p>
+        </div>
+        <div className=' w-2/5 p-2'>
+          <p>CONTACT NAME</p>
+          <p>{contact_name}</p>
+        </div>
+        <div className=' w-2/5 p-2'>
+          <p>CONTACT INFORMATION</p>
+          <p>{contact_phone}</p>
+        </div>
+        <div className=''>
+          <p></p>
+          <p></p>
+        </div>
+      </div>
+  </>
   )
 }
 
