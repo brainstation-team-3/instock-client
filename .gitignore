@@ -1,5 +1,6 @@
 ### Firebase template
-.idea
+.idea/
+.fleet/
 **/node_modules/*
 **/.firebaserc
 
@@ -140,6 +141,8 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+*-lock.json
+*.lock
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/

@@ -2,6 +2,10 @@ import React from 'react'
 
 export default function Footer() {
   return (
-    <div>Footer rrrrrrrrr</div>
+    <>
+      <p className="mt-auto w-full py-8 text-center bg-instock-light-grey text-instock-slate">
+        &copy; InStock Inc. All Rights Reserved.
+      </p>
+    </>
   )
 }
