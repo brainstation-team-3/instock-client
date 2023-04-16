@@ -1,9 +1,9 @@
 import axios from '@services/axios'
-import Routes from '@services/Routes'
+import routes from '@services/Routes'
 
-async function fetchData() {
+async function getWarehouses() {
   try {
-    const response = await axios.get(`/api/`)
+    const response = await axios.get(routes.warehouse);
     if (response.status === 200) {
       return response.data
     }
@@ -12,9 +12,9 @@ async function fetchData() {
   }
 }
 
-async function postData() {
+async function getWarehouse(id) {
   try {
-    const response = await axios.post(`/`)
+    const response = await axios.get(`${routes.warehouse}/${id}`);
     if (response.status === 200) {
       return response.data
     }
@@ -23,4 +23,15 @@ async function postData() {
   }
 }
 
-export { fetchData, postData }
+async function createWarehouse(data) {
+  try {
+    const response = await axios.post(routes.warehouse, data);
+    if (response.status === 201) {
+      return response.data
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export { getWarehouses, getWarehouse, createWarehouse }

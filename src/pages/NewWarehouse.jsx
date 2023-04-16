@@ -1,12 +1,13 @@
-import React from 'react'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router-dom'
+import FormField from '@components/Form/FormField.jsx'
+import CTA from '@components/Form/CTA.jsx'
+import { createWarehouse } from "@utils/helpers.js";
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
-import FormField from '@components/Form/FormField'
-import CTA from '@components/Form/CTA'
 
-export default function AddNewWarehouse() {
+export default function NewWarehouse() {
 
+  const navigate = useNavigate();
   const [newWarehouse, setNewWarehouse] = useState({
     warehouse_name: "",
     address: "",
@@ -18,7 +19,6 @@ export default function AddNewWarehouse() {
     contact_email: ""
   });
 
-  const navigate = useNavigate();
   const goBack = () => {
     navigate("/warehouse")
   };
@@ -32,7 +32,7 @@ export default function AddNewWarehouse() {
 
   const submitHandler = () => {
     useEffect(() => {
-      postData(newWarehouse)
+      createWarehouse(newWarehouse)
     })
   }
 

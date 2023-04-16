@@ -9,7 +9,7 @@ export default function NavBar() {
   const [ActiveLink, setActiveLink] = useState('Warehouse')
   
   return (
-    <header className='pt-1 pb-16 bg-instock-graphite md:p-0'>
+    <header className='pt-1 pb-20 md:pb-32 bg-instock-graphite'>
       <nav className='flex flex-col items-center justify-between gap-4 py-4 section md:flex-row'>
         <div className='flex justify-between'>
           <NavLink to='/'>
