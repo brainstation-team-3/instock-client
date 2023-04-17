@@ -2,21 +2,12 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '@assets/logos/InStock-Logo_1x.png'
 import NavItem from '@components/NavBar/NavItem'
+import NavLinks from './links.json'
 
 export default function NavBar() {
 
   const [ActiveLink, setActiveLink] = useState('Warehouse')
-  const NavLinks = [
-    {
-      path: '/warehouse',
-      name: 'Warehouse',
-    },
-    {
-      path: '/inventory',
-      name: 'Inventory',
-    },
-  ]
-
+  
   return (
     <header className='pt-1 pb-16 bg-instock-graphite md:p-0'>
       <nav className='flex flex-col items-center justify-between gap-4 py-4 section md:flex-row'>
