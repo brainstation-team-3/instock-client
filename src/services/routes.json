@@ -1,4 +1,4 @@
 {
-    "warehouse": "/api/warehouse",
-    "inventory": "/api/inventory"
+  "warehouse": "/api/warehouse",
+  "inventory": "/api/inventory"
 }
