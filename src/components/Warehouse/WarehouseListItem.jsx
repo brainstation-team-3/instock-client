@@ -19,7 +19,7 @@ function WarehouseListItem({ item }) {
               <img src={chevron} alt='chevron' className='inline' />
               </Link>
           </div>
-          <div className='order-3 md:order-2 max-md:basis-1/2 md:basis-1/6 md:flex-none box-border p-2 md:px-0'>
+          <div className='order-3 md:order-2 max-md:basis-1/2 md:basis-1/6 md:flex-none xl:grow box-border p-2 md:px-0'>
             <p className='font-semibold text-mh4 md:text-h4 text-instock-slate md:hidden'>ADDRESS</p>
             <p className='text-mp2 md:text-p2 md:break-normal'> {address}, {city}, {country}</p>
           </div>
