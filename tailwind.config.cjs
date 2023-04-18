@@ -20,6 +20,22 @@ module.exports = {
       fontFamily: {
         sans: ['Titillium Web', 'Rubik', ...defaultTheme.fontFamily.sans],
       },
+      fontSize: {
+        'mh1': ['28px', '36px'],
+        'mh2': ['20px', '28px'],
+        'mh3': ['13px', '20px'],
+        'mh4': ['11px', '16px'],
+        'mp1': ['15px', '26px'],
+        'mp2': ['13px', '20px'],
+        'mp3': ['11px', '16px'],
+        'h1': ['32px', '40px'],
+        'h2': ['24px', '32px'],
+        'h3': ['14px', '22px'],
+        'h4': ['12px', '18px'],
+        'p1': ['16px', '28px'],
+        'p2': ['14px', '22px'],
+        'p3': ['12px', '18px']
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
