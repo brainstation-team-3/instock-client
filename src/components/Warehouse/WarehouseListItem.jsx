@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import editIcon from '@/assets/icons/edit-24px.svg';
 import deleteIcon from '@/assets/icons/delete_outline-24px.svg';
 import chevron  from '@/assets/icons/chevron_right-24px.svg';
@@ -6,13 +7,13 @@ import chevron  from '@/assets/icons/chevron_right-24px.svg';
 function WarehouseListItem({ item }) {
   const { id, warehouse_name, address, city, country, contact_name, contact_phone, contact_email } = item;
   return (
-      <div className=' box-border py-2 flex  flex-wrap w-full'>
+      <div className=' box-border p-4 flex  flex-wrap w-full'>
         <div className='order-1 basis-1/2 box-border p-2'>
           <p className='font-semibold text-mh4 text-instock-slate'>WAREHOUSE</p>
-          <a href="" className='text-instock-indigo'>
-            <p className='text-mh3 font-semibold inline'>{warehouse_name}</p>
-            <img src={chevron} alt='chevron' class='inline' />
-            </a>
+          <Link className='text-instock-indigo' to={`/warehouse/${id}`}>
+            <p className='text-mh3 font-semibold inline hover:underline '>{warehouse_name}</p>
+            <img src={chevron} alt='chevron' className='inline' />
+            </Link>
         </div>
         <div className='order-3 basis-1/2 box-border p-2'>
           <p className='font-semibold text-mh4 text-instock-slate'>ADDRESS</p>
