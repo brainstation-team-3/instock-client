@@ -26,7 +26,6 @@ function Warehouse() {
 
   return (
       <div>
-          Warehouse
           <WarehouseList warehouseList={warehouseList} />      
     </div>
   )
