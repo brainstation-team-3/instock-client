@@ -5,11 +5,12 @@ import { ButtonPrimary } from '@components/Button/Button';
 import sort from '@/assets/icons/sort-24px.svg';
 
 
+
 function WarehouseList({ warehouseList }) {
 
   return (
-    <section className=' mx-3 md:mx-6'>
-      <div className='p-4 md:px-9 flex flex-col md:flex-row gap-y-4 md:items-center md:gap-y-0 md:gap-x-4'>
+    <section className=' mx-3 md:mx-6 xl:max-w-5xl xl:mx-auto'>
+      <div className='p-4 md:px-9 xl:px-10 flex flex-col md:flex-row gap-y-4 md:items-center md:gap-y-0 md:gap-x-4'>
         <h1 className='text-mh1 md:text-h1 font-semibold pt-2 md:mr-auto '>Warehouses</h1>
         <SearchBar />
         <ButtonPrimary
@@ -19,12 +20,12 @@ function WarehouseList({ warehouseList }) {
         />
       </div>
       <div className=''>
-        <div className='hidden md:block md:box-border md:px-9 md:flex md:gap-4 md:items-center md:justify-between w-full'>
+        <div className='hidden md:block md:box-border md:px-9 xl:px-10 md:flex md:gap-4 md:items-center md:justify-between w-full'>
           <div className='hidden md:block md:basis-2/12 md:py-2 md:text-h4'>
             <span>WAREHOUSE</span>
             <img src={sort} alt='sort' className='inline h-4 pl-1' />
           </div>
-          <div className='hidden md:block md:basis-2/12 md:py-2 md:text-h4'>
+          <div className='hidden md:block md:basis-2/12 xl:grow md:py-2 md:text-h4'>
             <span>ADDRESS</span>
             <img src={sort} alt='sort' className='inline h-4 pl-1' />
           </div>
@@ -36,7 +37,7 @@ function WarehouseList({ warehouseList }) {
             <span>CONTACT INFORMATION</span>
             <img src={sort} alt='sort' className='inline h-4 pl-1' />
           </div>
-          <div className='hidden md:block md:basis-1/12 md:py-2 md:text-h4'>
+          <div className='hidden md:block md:basis-1/12 md:py-2 md:text-h4 text-right'>
             <span>ACTIONS</span>
           </div>
         </div>
