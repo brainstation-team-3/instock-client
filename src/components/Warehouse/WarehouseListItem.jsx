@@ -1,11 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
 import editIcon from '@/assets/icons/edit-24px.svg';
 import deleteIcon from '@/assets/icons/delete_outline-24px.svg';
 import chevron  from '@/assets/icons/chevron_right-24px.svg';
-
-
-//to do: move the item map up a level and passdown the values as props. change header name, classes, and values to props
 
 function WarehouseListItem({ item }) {
   const { id, warehouse_name, address, city, country, contact_name, contact_phone, contact_email } = item;
