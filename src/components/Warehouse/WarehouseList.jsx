@@ -9,7 +9,7 @@ import sort from '@/assets/icons/sort-24px.svg';
 function WarehouseList({ warehouseList }) {
 
   return (
-    <section className=' mx-3 md:mx-6 xl:max-w-5xl xl:mx-auto'>
+    <section className=' -mt-14 md:-mt-20 mx-3 md:mx-6 bg-white xl:max-w-5xl xl:mx-auto'>
       <div className='p-4 md:px-9 xl:px-10 flex flex-col md:flex-row gap-y-4 md:items-center md:gap-y-0 md:gap-x-4'>
         <h1 className='text-mh1 md:text-h1 font-semibold pt-2 md:mr-auto '>Warehouses</h1>
         <SearchBar />
