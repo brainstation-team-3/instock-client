@@ -4,9 +4,9 @@ import SearchIcon from '@/assets/icons/search-24px.svg'
 
 function SearchBar() {
   return (
-    <form className="flex flex-row w-full h-9 md:h-8.5 relative ">
+    <form className="flex flex-row w-full md:basis-1/4 h-9 md:h-8.5 relative ">
       <input
-        className=" text-mh3 w-full px-4 border border-instock-cloud focus:outline-instock-indigo rounded-3xl"
+        className=" text-mh3 md:text-h3 w-full px-4 border border-instock-cloud focus:outline-instock-indigo rounded-3xl"
         type="text"
         placeholder="Search..."
       />
