@@ -22,7 +22,7 @@ function WarehouseListItem({item}) {
       </div>
       <div className="mb-4 md:mb-0">
         <p className="text-sm font-bold uppercase text-instock-slate md:hidden">address</p>
-        <p>{address}</p>
+        <p className="capitalize">{address}, {city}, {country}</p>
       </div>
       <div className="mb-4 md:mb-0">
         <p className="text-sm font-bold uppercase text-instock-slate md:hidden">contact information</p>
