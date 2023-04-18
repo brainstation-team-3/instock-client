@@ -4,25 +4,25 @@ import { useParams } from'react-router-dom'
 import { Link } from 'react-router-dom'
 import backArrow from '@assets/icons/arrow_back-24px.svg';
 import edit from '@assets/icons/edit-24px.svg';
+import axios from 'axios'
 
 function WarehouseDetail() {
 
-//   const {id} =useParams();
-//   const [loading, setLoading] = useState(true)
-//   const [warehouseDetail, setWarehouseDetail] = useState([])
+  const {id} =useParams();
+  const [loading, setLoading] = useState(true)
+  const [warehouseDetail, setWarehouseDetail] = useState([])
 
+  useEffect(() => {
+    getWarehouse(id).then((data) => {
+      setWarehouseDetail(data)
+      setLoading(false)
 
-//   useEffect(() => {
-//     getWarehouse({id}).then((data) => {
-//       setWarehouseDetail(data)
-//       setLoading(false)
-//       console.log(data)
-//     })
-//   }, [])
+    })
+  }, [])
 
-//   if (loading) {
-//     <div>Loading...</div>
-//   }
+  if (loading) {
+    <div>Loading...</div>
+  }
 
 //   return (
 //     <div>
