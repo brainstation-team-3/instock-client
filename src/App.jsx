@@ -8,9 +8,9 @@ import Footer from '@components/Footer/Footer'
 
 function App() {
   return (
-    <div className='flex h-screen flex-col bg-instock-light-grey'>
+    <div className='flex h-screen flex-col'>
       <NavBar />
-      <div className='grow'>
+      <div className='grow bg-instock-light-grey'>
         <Routes>
           <Route path='/' element={<Warehouse />} />
           <Route path='/warehouse' element={<Warehouse />} />
