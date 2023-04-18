@@ -21,7 +21,7 @@ module.exports = {
         sans: ['Titillium Web', 'Rubik', ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
-        'mh1': ['28px', '35px'],
+        'mh1': ['28px', '36px'],
         'mh2': ['20px', '28px'],
         'mh3': ['13px', '20px'],
         'mh4': ['11px', '16px'],
