@@ -17,7 +17,7 @@ function App() {
           <Route path='/warehouse' element={<Warehouse />} />
           <Route path='/inventory' element={<Inventory />} />
           <Route path="/new-warehouse" element={<NewWarehouse />} />
-        <Route path='*' element={<PageNotFound />} />
+          <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>
       <Footer />

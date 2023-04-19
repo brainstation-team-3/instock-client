@@ -1,5 +1,5 @@
 import axios from '@services/axios'
-import routes from '@services/Routes'
+import routes from '@services/routes.json'
 
 async function getWarehouses() {
   try {
