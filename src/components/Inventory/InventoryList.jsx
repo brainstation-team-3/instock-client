@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function Inventory() {
+export default function InventoryList() {
   return (
-    <div>Inventory Page</div>
+    <div>Inventory List</div>
   )
 }

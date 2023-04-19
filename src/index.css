@@ -23,4 +23,36 @@
   .section {
     @apply my-0 mx-4 md:mx-8 xl:mx-auto xl:max-w-7xl
   }
+
+  .page-header {
+    @apply text-3xl leading-9 md:text-[2rem] md:leading-10 font-semibold text-instock-black
+  }
+
+  .subheader {
+    @apply text-xl leading-7 md:text-2xl md:leading-8 font-semibold text-instock-black
+  }
+
+  .label-btn {
+    @apply text-[0.813rem] leading-5 md:text-sm md:leading-[1.375rem] font-semibold
+  }
+
+  .table-header {
+    @apply text-[0.688rem] leading-4 md:text-xs md:leading-[1.125rem] font-normal text-instock-slate uppercase
+  }
+
+  .body-large {
+    @apply text-[0.938rem] leading-[1.625rem] md:text-base md:leading-7 font-normal text-instock-black
+  }
+
+  .body-med {
+    @apply text-[0.813rem] leading-5 md:text-sm md:leading-[1.375rem] font-normal text-instock-black
+  }
+
+  .body-sm {
+    @apply text-[0.688rem] leading-4 md:text-xs md:leading-[1.125rem] font-normal text-instock-black
+  }
+
+  .input-text {
+    @apply text-[0.813rem] md:text-sm font-normal text-instock-black
+  }
 }
