@@ -1,89 +1,98 @@
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import FormField from '@components/Form/FormField.jsx'
-import CTA from '@components/Form/CTA.jsx'
-import { createWarehouse } from "@utils/helpers.js";
+import {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
+import FormField from '@components/Form/FormField'
+import {createWarehouse} from "@utils/helpers";
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
 
 export default function NewWarehouse() {
 
   const navigate = useNavigate();
-  const [newWarehouse, setNewWarehouse] = useState({
+
+  const [warehouseFields, setWarehouseFields] = useState({
     warehouse_name: "",
     address: "",
     city: "",
-    country: "",
+    country: ""
+  })
+
+  const [contactFields, setContactFields] = useState({
     contact_name: "",
-    position: "",
+    contact_position: "",
     contact_phone: "",
     contact_email: ""
-  });
+  })
 
   const goBack = () => {
     navigate("/warehouse")
   };
 
-  const onChangeHandler = (event) => {
-    setNewWarehouse({
-      name: event.target.name,
-      value: event.target.value,
-    });
-  }
-
-  const submitHandler = () => {
-    useEffect(() => {
-      createWarehouse(newWarehouse)
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const data = {
+      newWarehouse: {
+        ...warehouseFields,
+        ...contactFields
+      }
+    }
+    createWarehouse(data).then((res) => {
+      e.target.reset();
     })
   }
 
   return (
     <>
-      <div className="section bg-instock-light-grey shadow-md">
-        <div className="inline-flex justify-left pl-4 pt-9 pb-7 border-b w-full">
-          <img className='cursor-pointer' src={ArrowBackIcon} alt="back-arrow" onClick={goBack} />
-          <h1 className="page-header pl-4">Add New Warehouse</h1>
+      <div className="mx-4 rounded-md bg-white shadow-md mt-[-4.2rem] md:mt-[-6rem] md:mx-8 xl:mx-auto xl:max-w-7xl">
+        <div className="inline-flex w-full border-b pt-8 pb-6 pl-4 justify-left border-instock-cloud">
+          <img className='cursor-pointer' src={ArrowBackIcon} alt="back-arrow" onClick={goBack}/>
+          <h3 className="pl-2 page-header">Add New Warehouse</h3>
         </div>
-        <div className='md:inline-flex md:pb-4'>
-          <form className='py-4 px-4 border-b md:border-r md:border-b-0'>
-            <h2 className="subheader pb-5">Warehouse Details</h2>
-            <label>
-              <span className="label-btn pb-1">Warehouse Name</span>
-              <FormField name="warehouse_name" placeholder="Warehouse Name" onChange={onChangeHandler} />
-            </label>
-            <label>
-              <span className="label-btn pb-1">Street Address</span>
-              <FormField name="address" placeholder="Street Address" onChange={onChangeHandler} />
-            </label>
-            <label>
-              <span className="label-btn pb-1">City</span>
-              <FormField name="city" placeholder="City" onChange={onChangeHandler} />
-            </label>
-            <label>
-              <span className="label-btn pb-1">Country</span>
-              <FormField name="country" placeholder="Country" onChange={onChangeHandler} />
-            </label>
-          </form>
-          <form className='py-4 px-4'>
-            <h2 className="subheader pb-5">Contact Details</h2>
-            <label>
-              <span className="label-btn pb-1">Contact Name</span>
-              <FormField name="contact_name" placeholder="Contact Name" onChange={onChangeHandler} />
-            </label>
-            <label>
-              <span className="label-btn pb-1">Position</span>
-              <FormField name="position" placeholder="Position" onChange={onChangeHandler} />
-            </label>
-            <label>
-              <span className="label-btn pb-1">Phone Number</span>
-              <FormField name="contact_phone" placeholder="Phone Number" onChange={onChangeHandler} />
-            </label>
-            <label>
-              <span className="label-btn pb-1">Email</span>
-              <FormField name="contact_email" placeholder="Email" onChange={onChangeHandler} />
-            </label>
+        <div className='md:flex'>
+          <form className='mb-6 md:mb-0 rounded-b-md border-b pt-4'
+                onSubmit={submitHandler}
+          >
+            <div className="section md:flex md:mb-6">
+              <div
+                className="border-b p-4 border-instock-cloud mx-[-1rem] md:mx-0 md:my-4 md:border-r md:border-b-0 md:px-6 md:py-0">
+                <h4 className="pb-5 subheader">Warehouse Details</h4>
+                {Object.keys(warehouseFields).map((field, index) => (
+                  <label key={index}>
+                    <span className="pb-1 capitalize label-btn">{field.replace("_", " ")}</span>
+                    <FormField field={field}
+                               onChange={setWarehouseFields}
+                               value={warehouseFields.field}
+                    />
+                  </label>
+                ))}
+              </div>
+              <div className="p-4 mx-[-1rem] md:mx-0 md:my-4 md:px-6 md:py-0">
+                <h4 className="pb-5 subheader">Contact Details</h4>
+                {Object.keys(contactFields).map((field, index) => (
+                  <label key={index}>
+                    <span className="pb-1 capitalize label-btn">{field.replace("_", " ")}</span>
+                    <FormField field={field}
+                               onChange={setContactFields}
+                               value={contactFields.field}
+                    />
+                  </label>
+                ))}
+              </div>
+            </div>
+            <div className="flex items-center w-full gap-4 px-6 py-4 bg-instock-light-grey md:justify-end">
+              <button type="reset"
+                      className="label-btn h-9 w-1/2 border rounded-full
+                      text-instock-cloud hover:border-instock-indigo hover:text-instock-indigo md:h-10 md:w-28 md:px-4"
+              >
+                Cancel
+              </button>
+              <button type="submit"
+                      className="label-btn ml-4 h-9 w-1/2 rounded-full bg-instock-indigo text-instock-white
+                      hover:bg-instock-graphite md:h-10 md:w-36 md:px-4 md:mr-8 "
+              >
+                + Add Warehouse
+              </button>
+            </div>
           </form>
         </div>
-        <CTA submitHandler={submitHandler} />
       </div>
     </>
   )

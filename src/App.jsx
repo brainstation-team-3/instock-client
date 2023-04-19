@@ -5,7 +5,7 @@ import Inventory from '@pages/Inventory'
 import PageNotFound from '@pages/PageNotFound'
 import NavBar from '@components/NavBar/NavBar'
 import Footer from '@components/Footer/Footer'
-import NewWarehouse from '@pages/NewWarehouse.jsx'
+import NewWarehouse from '@pages/NewWarehouse'
 
 function App() {
   return (
