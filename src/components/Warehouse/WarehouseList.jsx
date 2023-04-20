@@ -1,5 +1,5 @@
 import WarehouseListItem from './WarehouseListItem';
-import WarehouseTableHeader from "./WarehouseTableHeader";
+import TableHeader from "../Table/TableHeader";
 
 function WarehouseList({warehouseList}) {
 
@@ -7,7 +7,7 @@ function WarehouseList({warehouseList}) {
 
   return (
     <div className="bg-instock-light-grey">
-      <WarehouseTableHeader columns={tableHeaders}/>
+      <TableHeader columns={tableHeaders}/>
       {warehouseList.map((item) => (<WarehouseListItem key={item.id} item={item}/>))}
     </div>
   )
