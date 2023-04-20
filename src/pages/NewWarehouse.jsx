@@ -34,9 +34,8 @@ export default function NewWarehouse() {
         ...contactFields
       }
     }
-    createWarehouse(data).then((res) => {
-      e.target.reset();
-    })
+    createWarehouse(data)
+      .then(e.target.reset())
   }
 
   return (
