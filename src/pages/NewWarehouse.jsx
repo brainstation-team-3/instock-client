@@ -47,10 +47,10 @@ export default function NewWarehouse() {
           <h3 className="pl-2 page-header">Add New Warehouse</h3>
         </div>
         <div className='md:flex'>
-          <form className='mb-6 md:mb-0 rounded-b-md border-b pt-4'
+          <form className='mb-6 rounded-b-md border-b pt-4 md:mb-0'
                 onSubmit={submitHandler}
           >
-            <div className="section md:flex md:mb-6">
+            <div className="section md:mb-6 md:flex">
               <div
                 className="border-b p-4 border-instock-cloud mx-[-1rem] md:mx-0 md:my-4 md:border-r md:border-b-0 md:px-6 md:py-0">
                 <h4 className="pb-5 subheader">Warehouse Details</h4>
@@ -77,16 +77,17 @@ export default function NewWarehouse() {
                 ))}
               </div>
             </div>
-            <div className="flex items-center w-full gap-4 px-6 py-4 bg-instock-light-grey md:justify-end">
+            <div className="flex w-full items-center gap-4 px-6 py-4 bg-instock-light-grey md:justify-end">
               <button type="reset"
-                      className="label-btn h-9 w-1/2 border rounded-full
-                      text-instock-cloud hover:border-instock-indigo hover:text-instock-indigo md:h-10 md:w-28 md:px-4"
+                      className="label-btn w-1/2 border rounded-full
+                      text-instock-cloud hover:border-instock-indigo py-2 hover:text-instock-indigo md:w-28 md:px-4
+                      duration-300 ease-in-out"
               >
                 Cancel
               </button>
               <button type="submit"
-                      className="label-btn ml-4 h-9 w-1/2 rounded-full bg-instock-indigo text-instock-white
-                      hover:bg-instock-graphite md:h-10 md:w-36 md:px-4 md:mr-8 "
+                      className="label-btn w-1/2 py-2 rounded-full bg-instock-indigo text-instock-white
+                      hover:bg-instock-black md:w-36 md:px-4 md:mr-8 duration-300 ease-in-out"
               >
                 + Add Warehouse
               </button>
