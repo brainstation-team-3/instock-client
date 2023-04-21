@@ -57,7 +57,7 @@ export default function NewInventoryItem() {
     })
   }, [categoryList, warehouseList])
 
-  return (
+return (
     <>
       <div className="mx-4 mt-[-4.2rem] rounded-md bg-white shadow-md md:mx-8 md:mt-[-6rem] xl:mx-auto xl:max-w-7xl">
         <div className="justify-left border-status-cloud inline-flex w-full border-b pb-6 pl-4 pt-8">
