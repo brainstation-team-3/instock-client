@@ -14,12 +14,14 @@ export default function NewInventoryItem() {
     category: '',
   })
 
+  // check this
   const [availabilityFields, setAvailabilityFields] = useState({
     status: true,
     quantity: 1,
     warehouse: '',
   })
 
+  const [category, setCategory] = useState("")
   const [categoryList, setCategoryList] = useState([])
   const [warehouseList, setWarehouseList] = useState([])
 
@@ -40,12 +42,16 @@ export default function NewInventoryItem() {
 
   useEffect(() => {
     getInventory().then((data) => {
-      setCategoryList(data.category)
+      const myCategoryList = new Set(data.map((item) => {
+        return item.category
+      }))
+      setCategoryList([...myCategoryList])
     })
+
     getWarehouses().then((data) => {
-      setWarehouseList(data.warehouse_name)
+      setWarehouseList(data.warehouse_name) // might be an issue here
     })
-  }, [])
+  }, [categoryList, warehouseList])
 
   return (
     <>
@@ -66,8 +72,8 @@ export default function NewInventoryItem() {
                     className="input-text placeholder-text-instock-cloud mb-2 mt-1 w-full rounded-3xl border border-instock-cloud
                                     px-4 py-2 placeholder:capitalize active:border-instock-indigo"
                     placeholder="Item Name"
-                    onChange={setDetailsFields}
-                    value={detailsFields.item_name}
+                    // onChange={setDetailsFields}
+                    // value={detailsFields.item_name}
                   />
                 </label>
                 <label>
@@ -76,8 +82,8 @@ export default function NewInventoryItem() {
                     className="input-text placeholder-text-instock-cloud mb-2 mt-1 w-full rounded-3xl border border-instock-cloud
                                     px-4 py-2 placeholder:capitalize active:border-instock-indigo"
                     placeholder="Please enter a brief item description..."
-                    onChange={setDetailsFields}
-                    value={detailsFields.description}
+                    // onChange={setDetailsFields}
+                    // value={detailsFields.description}
                   />
                 </label>
                 <label>
@@ -90,10 +96,12 @@ export default function NewInventoryItem() {
                       className="input-text placeholder-text-instock-cloud mb-2 mt-1 w-full appearance-none rounded-3xl border border-instock-cloud
                                         px-4 py-2 placeholder:capitalize active:border-instock-indigo"
                       placeholder="Please select"
-                      onChange={setDetailsFields}
-                      value={detailsFields.category}
+                      defaultValue={category}
+                      onChange={() => setCategory(category)}
                     >
-                      <option value={categoryList} />
+                      {categoryList.map((category, index) => (
+                          <option key={index} value={category}>{category}</option>
+                      ))}
                     </select>
                   </div>
                 </label>
