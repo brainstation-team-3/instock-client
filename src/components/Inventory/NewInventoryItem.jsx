@@ -47,6 +47,7 @@ export default function NewInventoryItem() {
       )
       setCategoryList([...allCategories])
     })
+
     getWarehouses().then((data) => {
       const allWarehouses = new Set(
         data.map((item) => {
