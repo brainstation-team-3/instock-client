@@ -1,124 +1,170 @@
-import {useNavigate} from 'react-router-dom'
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
 import ArrowDropDown from '@assets/icons/arrow_drop_down-24px.svg'
-import { ButtonPrimary } from '../Button/Button';
+import { ButtonPrimary } from '../Button/Button'
+import { createInventoryItem, getInventory, getWarehouses } from '@utils/helpers'
 
 export default function NewInventoryItem() {
+  const navigate = useNavigate()
 
-    const navigate = useNavigate();
+  const [detailsFields, setDetailsFields] = useState({
+    item_name: '',
+    description: '',
+    category: '',
+  })
 
-    const [detailsFields, setDetailsFields] = useState({
-        item_name: "",
-        description: "",
-        category: ""
-    });
+  const [availabilityFields, setAvailabilityFields] = useState({
+    status: true,
+    quantity: 1,
+    warehouse: '',
+  })
 
-    const [availabilityFields, setAvailabilityFields] = useState({
-        status: "",
-        quantity: 0,
-        warehouse: ""
-    });
+  const [categoryList, setCategoryList] = useState([])
+  const [warehouseList, setWarehouseList] = useState([])
 
-    const goBack = () => {
-        navigate("/inventory")
-      };
+  const goBack = () => {
+    navigate('/inventory')
+  }
 
-    return (
-        <>
-        <div className="mx-4 rounded-md bg-white shadow-md mt-[-4.2rem] md:mt-[-6rem] md:mx-8 xl:mx-auto xl:max-w-7xl">
-            <div className="inline-flex w-full border-b pt-8 pb-6 pl-4 justify-left border-instock-cloud">
-                <img className='cursor-pointer' src={ArrowBackIcon} alt="back-arrow" onClick={goBack}/>
-                <h3 className="pl-2 page-header">Add New Inventory Item</h3>
-            </div>
-            <div className='md:flex'>
-                <form className='mb-6 rounded-b-md border-b pt-4 md:mb-0'
-                    // onSubmit={submitHandler}
-                >
-                    <div className="section md:mb-6 md:flex">
-                        <div
-                            className="border-b p-4 border-instock-cloud mx-[-1rem] md:mx-0 md:my-4 md:border-r md:border-b-0 md:px-6 md:py-0">
-                            <h4 className="pb-5 subheader">Item Details</h4>
-                            <label>
-                                <span className='pb-1 capitalize label-btn'>Item Name</span>
-                                <input type='text'
-                                    className="input-text py-2 w-full mb-2 mt-1 border border-instock-cloud rounded-3xl
-                                    placeholder:capitalize placeholder-text-instock-cloud px-4 active:border-instock-indigo"
-                                    placeholder='Item Name'
-                                />
-                            </label>
-                            <label>
-                                <span className='pb-1 capitalize label-btn'>Description</span>
-                                <textarea className="input-text py-2 w-full mb-2 mt-1 border border-instock-cloud rounded-3xl
-                                    placeholder:capitalize placeholder-text-instock-cloud px-4 active:border-instock-indigo"
-                                    placeholder='Please enter a brief item description...'
-                                />
-                            </label>
-                            <label>
-                                <span className='pb-1 capitalize label-btn'>Category</span>
-                                <div className='relative'>
-                                    <div className='absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none'>
-                                        <img src={ArrowDropDown} />
-                                    </div>
-                                    <select className="input-text appearance-none py-2 w-full mb-2 mt-1 border border-instock-cloud rounded-3xl
-                                        placeholder:capitalize placeholder-text-instock-cloud px-4 active:border-instock-indigo"
-                                        placeholder='Please select'
-                                    />
-                                </div>
-                            </label>
-                            <div className="p-4 mx-[-1rem] md:mx-0 md:my-4 md:px-6 md:py-0">
-                                <h4 className="pb-5 subheader">Contact Details</h4>
-                                <label className='flex flex-wrap pb-2'>
-                                    <span className='pb-1 capitalize label-btn w-full'>Status</span>
-                                    <div className='w-2/4'>
-                                        <input type='radio' value="in-stock" defaultChecked />
-                                        <span className='input-text pl-2'>In Stock</span>
-                                    </div>
-                                    <div>
-                                        <input type='radio' value="out-of-stock" />
-                                        <span className='input-text pl-2'>Out of Stock</span>
-                                    </div>
-                                </label>
-                                <label>
-                                    <span className='pb-1 capitalize label-btn'>Quantity</span>
-                                    <input className="input-text py-2 w-full mb-2 mt-1 border border-instock-cloud rounded-3xl
-                                    placeholder:capitalize placeholder-text-instock-cloud px-4 active:border-instock-indigo"
-                                        type='number'
-                                        value="0"
-                                    />
-                                </label>
-                                <label className='pt-4'>
-                                    <span className='pb-1 capitalize label-btn'>Warehouse</span>
-                                    <div className='relative'>
-                                        <div className='absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none'>
-                                            <img src={ArrowDropDown} />
-                                        </div>
-                                        <select className="input-text appearance-none py-2 w-full mb-2 mt-1 border border-instock-cloud rounded-3xl
-                                        placeholder:capitalize placeholder-text-instock-cloud px-4 active:border-instock-indigo"
-                                        placeholder='Please select'
-                                        />
-                                        </div>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex w-full items-center gap-4 px-6 py-4 bg-instock-light-grey md:justify-end">
-                        <button type="reset"
-                        className="label-btn w-1/2 border rounded-full
-                        text-instock-cloud hover:border-instock-indigo py-2 hover:text-instock-indigo md:w-28 md:px-4
-                        duration-300 ease-in-out"
-                        >
-                        Cancel
-                        </button>
-                        <ButtonPrimary
-                            type="submit"
-                            link=""
-                            text="+ Add Item"
-                        />
-                    </div>
-                </form>
-            </div>
+  const submitHandler = (e) => {
+    e.preventDefault()
+    const data = {
+      newInventoryItem: {
+        ...detailsFields,
+        ...availabilityFields,
+      },
+    }
+    createInventoryItem(data).then(e.target.reset())
+  }
+
+  useEffect(() => {
+    getInventory().then((data) => {
+      setCategoryList(data.category)
+    })
+    getWarehouses().then((data) => {
+      setWarehouseList(data.warehouse_name)
+    })
+  }, [])
+
+  return (
+    <>
+      <div className="mx-4 mt-[-4.2rem] rounded-md bg-white shadow-md md:mx-8 md:mt-[-6rem] xl:mx-auto xl:max-w-7xl">
+        <div className="justify-left inline-flex w-full border-b border-instock-cloud pb-6 pl-4 pt-8">
+          <img className="cursor-pointer" src={ArrowBackIcon} alt="back-arrow" onClick={goBack} />
+          <h3 className="page-header pl-2">Add New Inventory Item</h3>
         </div>
-        </>
-    )
+        <div className="md:flex">
+          <form className="mb-6 rounded-b-md border-b pt-4 md:mb-0" onSubmit={submitHandler}>
+            <div className="section md:mb-6 md:flex">
+              <div className="mx-[-1rem] border-b border-instock-cloud p-4 md:mx-0 md:my-4 md:border-b-0 md:border-r md:px-6 md:py-0">
+                <h4 className="subheader pb-5">Item Details</h4>
+                <label>
+                  <span className="label-btn pb-1 capitalize">Item Name</span>
+                  <input
+                    type="text"
+                    className="input-text placeholder-text-instock-cloud mb-2 mt-1 w-full rounded-3xl border border-instock-cloud
+                                    px-4 py-2 placeholder:capitalize active:border-instock-indigo"
+                    placeholder="Item Name"
+                    onChange={setDetailsFields}
+                    value={detailsFields.item_name}
+                  />
+                </label>
+                <label>
+                  <span className="label-btn pb-1 capitalize">Description</span>
+                  <textarea
+                    className="input-text placeholder-text-instock-cloud mb-2 mt-1 w-full rounded-3xl border border-instock-cloud
+                                    px-4 py-2 placeholder:capitalize active:border-instock-indigo"
+                    placeholder="Please enter a brief item description..."
+                    onChange={setDetailsFields}
+                    value={detailsFields.description}
+                  />
+                </label>
+                <label>
+                  <span className="label-btn pb-1 capitalize">Category</span>
+                  <div className="relative">
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                      <img src={ArrowDropDown} alt="dropdown arrow" />
+                    </div>
+                    <select
+                      className="input-text placeholder-text-instock-cloud mb-2 mt-1 w-full appearance-none rounded-3xl border border-instock-cloud
+                                        px-4 py-2 placeholder:capitalize active:border-instock-indigo"
+                      placeholder="Please select"
+                      onChange={setDetailsFields}
+                      value={detailsFields.category}
+                    >
+                      <option value={categoryList} />
+                    </select>
+                  </div>
+                </label>
+                <div className="mx-[-1rem] p-4 md:mx-0 md:my-4 md:px-6 md:py-0">
+                  <h4 className="subheader pb-5">Contact Details</h4>
+                  <label className="flex flex-wrap pb-2">
+                    <span className="label-btn w-full pb-1 capitalize">Status</span>
+                    <div className="w-2/4">
+                      <input
+                        type="radio"
+                        onChange={setAvailabilityFields}
+                        value={availabilityFields.status}
+                        disabled={availabilityFields.quantity === 0 ? true : false}
+                        defaultChecked
+                      />
+                      <span className="input-text pl-2">In Stock</span>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        onChange={setAvailabilityFields}
+                        value={availabilityFields.status}
+                        disabled={availabilityFields.quantity > 0 ? true : false}
+                      />
+                      <span className="input-text pl-2">Out of Stock</span>
+                    </div>
+                  </label>
+                  <label>
+                    <span className="label-btn pb-1 capitalize">Quantity</span>
+                    <input
+                      className="input-text placeholder-text-instock-cloud mb-2 mt-1 w-full rounded-3xl border border-instock-cloud
+                                    px-4 py-2 placeholder:capitalize active:border-instock-indigo"
+                      type="number"
+                      onChange={setAvailabilityFields}
+                      value={availabilityFields.quantity}
+                    />
+                  </label>
+                  <label className="pt-4">
+                    <span className="label-btn pb-1 capitalize">Warehouse</span>
+                    <div className="relative">
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                        <img src={ArrowDropDown} alt="dropdown arrow" />
+                      </div>
+                      <select
+                        className="input-text placeholder-text-instock-cloud mb-2 mt-1 w-full appearance-none rounded-3xl border border-instock-cloud
+                                            px-4 py-2 placeholder:capitalize active:border-instock-indigo"
+                        placeholder="Please select"
+                        onChange={setAvailabilityFields}
+                        value={availabilityFields.warehouse}
+                      >
+                        <option value={warehouseList} />
+                      </select>
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className="flex w-full items-center gap-4 bg-instock-light-grey px-6 py-4 md:justify-end">
+              <button
+                type="reset"
+                className="label-btn w-1/2 rounded-full border
+                        py-2 text-instock-cloud duration-300 ease-in-out hover:border-instock-indigo hover:text-instock-indigo
+                        md:w-28 md:px-4"
+              >
+                Cancel
+              </button>
+              <ButtonPrimary type="submit" link="" text="+ Add Item" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
+  )
 }
