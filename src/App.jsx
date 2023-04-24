@@ -1,11 +1,11 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
+import NavBar from '@components/NavBar/NavBar'
 import Warehouse from '@pages/Warehouse'
 import Inventory from '@pages/Inventory'
 import PageNotFound from '@pages/PageNotFound'
-import NavBar from '@components/NavBar/NavBar'
+import AddEditWarehouse from '@pages/AddEditWarehouse'
 import Footer from '@components/Footer/Footer'
-import AddEditWarehouse from '@pages/AddEditWarehouse.jsx'
 
 function App() {
   return (
