@@ -6,6 +6,8 @@ import Inventory from '@pages/Inventory'
 import PageNotFound from '@pages/PageNotFound'
 import AddEditWarehouse from '@pages/AddEditWarehouse'
 import Footer from '@components/Footer/Footer'
+import NewWarehouse from '@pages/NewWarehouse'
+import NewInventoryItem from '@components/Inventory/NewInventoryItem'
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           <Route path='/inventory' element={<Inventory />} />
           <Route path="/new-warehouse" element={<AddEditWarehouse />} />
           <Route path="/warehouse/:warehouseId/edit" element={<AddEditWarehouse />} />
+          <Route path='/new-inventory-item' element={<NewInventoryItem />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>
