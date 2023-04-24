@@ -1,13 +1,16 @@
-import {Link} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import editIcon from '@/assets/icons/edit-24px.svg';
 import deleteIcon from '@/assets/icons/delete_outline-24px.svg';
 import chevron from '@/assets/icons/chevron_right-24px.svg';
 
 function WarehouseListItem({item}) {
+  const navigate = useNavigate();
+
   const {id, warehouse_name, address, city, country, contact_name, contact_phone, contact_email} = item;
 
   return (
-    <div key={id} className="border-instock-cloud shadow-md border-b md:last:border-b-0 bg-white py-8 px-6 grid grid-cols-2 last:rounded-b-md md:grid-cols-5 md:items-center"
+    <div key={id} className="grid grid-cols-2 border-b bg-white px-6 py-8 shadow-md border-instock-cloud
+    last:rounded-b-md md:grid-cols-5 md:items-center md:px-10 md:last:border-b-0"
     >
       <div className="mb-4 md:mb-0">
         <p className="text-sm font-bold uppercase text-instock-slate md:hidden">warehouse</p>
@@ -16,22 +19,27 @@ function WarehouseListItem({item}) {
            <img className="mt-1" src={chevron} alt="chevron-icon"/>
          </span>
       </div>
-      <div className="mb-4 md:mb-0">
-        <p className="text-sm font-bold uppercase text-instock-slate md:hidden">contact name</p>
-        <p className="capitalize">{contact_name}</p>
-      </div>
-      <div className="mb-4 md:mb-0">
+      <div className="col-start-1 mb-4 w-4/5 break-words md:col-start-2 md:mb-0">
         <p className="text-sm font-bold uppercase text-instock-slate md:hidden">address</p>
         <p className="capitalize">{address}, {city}, {country}</p>
       </div>
-      <div className="mb-4 md:mb-0">
+      <div className="col-start-2 row-start-1 mb-4 w-4/5 break-words md:col-start-3 md:mb-0">
+        <p className="text-sm font-bold uppercase text-instock-slate md:hidden">contact name</p>
+        <p className="capitalize">{contact_name}</p>
+      </div>
+      <div className="col-start-2 mb-4 break-words md:col-start-4 md:mb-0">
         <p className="text-sm font-bold uppercase text-instock-slate md:hidden">contact information</p>
         <p>{contact_phone}</p>
         <p>{contact_email}</p>
       </div>
-      <div className="col-span-2 md:mb-0 flex items-center justify-between md:col-span-1 md:justify-end md:gap-6">
+      <div
+        className="col-span-2 flex items-center justify-between md:col-span-1 md:mr-2 md:mb-0 md:justify-end md:gap-4">
         <img className="cursor-pointer md:w-7" src={deleteIcon} alt="delete-icon"/>
-        <img className="cursor-pointer justify-self-end md:w-7" src={editIcon} alt="delete-icon"/>
+        <img onClick={() => navigate(`/warehouse/${id}/edit`)}
+             className="cursor-pointer justify-self-end md:w-7"
+             src={editIcon}
+             alt="delete-icon"
+        />
       </div>
     </div>
   )
