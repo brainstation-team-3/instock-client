@@ -34,4 +34,26 @@ async function createWarehouse(data) {
   }
 }
 
-export { getWarehouses, getWarehouse, createWarehouse }
+async function editWarehouse(id, data) {
+  try {
+    const response = await axios.put(`${routes.warehouse}/${id}`, data);
+    if (response.status === 200) {
+      return response.data
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function deleteWarehouse(id) {
+  try {
+    const response = await axios.delete(`${routes.warehouse}/${id}`);
+    if (response.status === 200) {
+      return response.data
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse }
