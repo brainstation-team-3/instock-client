@@ -28,7 +28,7 @@ return (
       <section className=' -mt-14 md:-mt-20 mx-3 md:mx-6 bg-white xl:max-w-5xl xl:mx-auto'>
         <div className='px-6 py-7 md:px-9 xl:px-10 flex md:flex-row gap-y-4 items-center md:gap-y-0 md:gap-x-4'>
           <Link to='/'><img src={backArrow} alt="back_arrow" className='h-7 '/></Link> 
-          <h1 className='text-mh1 md:text-h1 font-semibold mr-auto ml-2 '>Washington</h1>
+          <h1 className='text-mh1 md:text-h1 font-semibold mr-auto ml-2 '>{warehouseDetail.warehouse_name}</h1>
           <div className='h-9 w-9  md:flex md:w-20 md:items-center md:justify-center rounded-full bg-instock-indigo'>
           <img src={edit} alt="edit icon " className='h-7 w-7 fill-white text-white' />
           <span className='max-md:hidden  text-white text-h3 text-center'>Edit</span>
