@@ -80,21 +80,16 @@ async function createInventoryItem(data) {
 
 async function fetchData() {
   try {
-    const inventoryData = await getInventory();
-    const allCategories = new Set(
-      inventoryData.map((item) => {
-        return item.category;
-      })
-    );
-    setCategoryList([...allCategories]);
+    const inventoryData = await getInventory()
+    const warehouseData = await getWarehouses()
+    const allCategories = inventoryData.map((item) => item.category)
+    const allWarehouses = warehouseData.map((item) => item.warehouse)
 
-    const warehouseData = await getWarehouses();
-    const allWarehouses = new Set(
-      warehouseData.map((item) => {
-        return item.warehouse;
-      })
-    );
-    setWarehouseList([...allWarehouses]);
+    return {
+      allCategories: [...new Set(allCategories)],
+      allWarehouses: [...new Set(allWarehouses)]
+    }
+
   } catch (error) {
     console.log(error)
   }
