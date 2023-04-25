@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
 import ArrowDropDown from '@assets/icons/arrow_drop_down-24px.svg'
-import { createInventoryItem, getInventory, getWarehouses } from '@utils/helpers'
+import { createInventoryItem, fetchData } from '@utils/helpers'
 import { ButtonPrimary } from '@components/Button/Button'
 
 export default function NewInventoryItem() {

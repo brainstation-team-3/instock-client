@@ -18,6 +18,7 @@ function App() {
           <Route path='/warehouse' element={<Warehouse />} />
           <Route path='/warehouse/:id' element={<WarehouseDetail />} />
           <Route path='/inventory' element={<Inventory />} />
+          <Route path="/new-warehouse" element={<AddEditWarehouse />} />
           <Route path="/warehouse/:warehouseId/edit" element={<AddEditWarehouse />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
