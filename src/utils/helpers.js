@@ -34,4 +34,18 @@ async function createWarehouse(data) {
   }
 }
 
-export { getWarehouses, getWarehouse, createWarehouse }
+// inventory
+async function getInventory() {
+  try {
+    const response = await axios.get(routes.inventory);
+    if (response.status === 200) {
+      return response.data
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+
+
+export { getWarehouses, getWarehouse, createWarehouse, getInventory}
