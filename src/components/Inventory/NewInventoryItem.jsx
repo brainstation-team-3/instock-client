@@ -28,10 +28,10 @@ export default function NewInventoryItem() {
     e.preventDefault()
     const data = {
       newInventoryItem: {
-        ...category,
-        ...warehouse,
-        ...quantity,
-        ...status,
+        category,
+        warehouse,
+        quantity,
+        status,
         ...itemData,
       },
     }
