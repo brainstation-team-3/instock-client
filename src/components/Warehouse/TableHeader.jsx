@@ -1,6 +1,6 @@
 import sortIcon from '@assets/icons/sort-24px.svg'
 
-const WarehouseTableHeader = ({columns}) => {
+const TableHeader = ({columns}) => {
   return (
     <div>
       <div className="hidden px-6 md:grid md:grid-cols-5 md:justify-start md:py-2 md:shadow-md md:text-sm">
@@ -15,4 +15,4 @@ const WarehouseTableHeader = ({columns}) => {
   );
 };
 
-export default WarehouseTableHeader;
+export default TableHeader;
