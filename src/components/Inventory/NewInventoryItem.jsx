@@ -39,7 +39,11 @@ export default function NewInventoryItem() {
   }
 
   useEffect(() => {
-    fetchData();
+    fetchData()
+      .then(({ allCategories, allWarehouses }) => {
+        setCategoryList(allCategories)
+        setWarehouseList(allWarehouses)
+    })
   }, [categoryList, warehouseList])
 
   return (
