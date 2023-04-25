@@ -28,10 +28,10 @@ export default function NewInventoryItem() {
     e.preventDefault()
     const data = {
       newInventoryItem: {
-        ...category,
-        ...warehouse,
-        ...quantity,
-        ...status,
+        category,
+        warehouse,
+        quantity,
+        status,
         ...itemData,
       },
     }
@@ -39,22 +39,28 @@ export default function NewInventoryItem() {
   }
 
   useEffect(() => {
-    getInventory().then((data) => {
-      const allCategories = new Set(
-        data.map((item) => {
-          return item.category
-        })
-      )
-      setCategoryList([...allCategories])
-    })
-    getWarehouses().then((data) => {
-      const allWarehouses = new Set(
-        data.map((item) => {
-          return item.warehouse
-        })
-      )
-      setWarehouseList([...allWarehouses])
-    })
+    async function fetchData() {
+      try {
+        const inventoryData = await getInventory();
+        const allCategories = new Set(
+          inventoryData.map((item) => {
+            return item.category;
+          })
+        );
+        setCategoryList([...allCategories]);
+    
+        const warehouseData = await getWarehouses();
+        const allWarehouses = new Set(
+          warehouseData.map((item) => {
+            return item.warehouse;
+          })
+        );
+        setWarehouseList([...allWarehouses]);
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchData();
   }, [categoryList, warehouseList])
 
   return (
