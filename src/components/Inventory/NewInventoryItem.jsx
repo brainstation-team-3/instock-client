@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
 import ArrowDropDown from '@assets/icons/arrow_drop_down-24px.svg'
-import { createInventoryItem, getInventory, getWarehouses } from '@utils/helpers'
+import { createInventoryItem, fetchData } from '@utils/helpers'
 import { ButtonPrimary } from '@components/Button/Button'
 
 export default function NewInventoryItem() {
@@ -39,27 +39,6 @@ export default function NewInventoryItem() {
   }
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        const inventoryData = await getInventory();
-        const allCategories = new Set(
-          inventoryData.map((item) => {
-            return item.category;
-          })
-        );
-        setCategoryList([...allCategories]);
-    
-        const warehouseData = await getWarehouses();
-        const allWarehouses = new Set(
-          warehouseData.map((item) => {
-            return item.warehouse;
-          })
-        );
-        setWarehouseList([...allWarehouses]);
-      } catch (error) {
-        console.log(error)
-      }
-    }
     fetchData();
   }, [categoryList, warehouseList])
 

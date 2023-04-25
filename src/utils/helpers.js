@@ -78,4 +78,26 @@ async function createInventoryItem(data) {
   }
 }
 
-export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse, getInventory, createInventoryItem }
+async function fetchData() {
+  try {
+    const inventoryData = await getInventory();
+    const allCategories = new Set(
+      inventoryData.map((item) => {
+        return item.category;
+      })
+    );
+    setCategoryList([...allCategories]);
+
+    const warehouseData = await getWarehouses();
+    const allWarehouses = new Set(
+      warehouseData.map((item) => {
+        return item.warehouse;
+      })
+    );
+    setWarehouseList([...allWarehouses]);
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse, getInventory, createInventoryItem, fetchData }
