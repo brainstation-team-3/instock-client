@@ -108,6 +108,17 @@ async function getWarehouseNames() {
   }
 }
 
+async function getWarehouseInventory(id) {
+  try {
+    const inventoryData = await getInventory();
+    const warehouseInventory = inventoryData.filter((id) => warehouse_id === `${id}`)
+    return warehouseInventory
+  }
+  catch (error) {
+    console.log(error)
+  }
+}
+
 const { format } = new Intl.NumberFormat('en-US')
 
-export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse, getInventory, createInventoryItem, getCategoryNames, getWarehouseNames, format}
+export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse, getInventory, createInventoryItem, getCategoryNames, getWarehouseNames, getWarehouseInventory, format}
