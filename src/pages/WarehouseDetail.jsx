@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { getWarehouse } from '@utils/helpers'
 import { useNavigate, useParams } from 'react-router-dom'
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
-import editIcon from '@assets/icons/edit-24px.svg'
+import editIcon from '@assets/icons/edit-alt-24px.svg'
 
 function WarehouseDetail() {
 
@@ -26,7 +26,7 @@ function WarehouseDetail() {
         <h3 className='pl-2 capitalize page-header'>
           {warehouseDetail.warehouse_name}
         </h3>
-        <div onClick={() => navigate(`/warehouse/${id}`)}
+        <div onClick={() => navigate(`/warehouse/${id}/edit`)}
              className='ml-auto cursor-pointer rounded-full p-3 md:py-1.5 px-3.5 text-white bg-instock-indigo
              md:flex md:items-center md:gap-2 md:justify-center'>
           <img className='w-5 rounded-full' src={editIcon} alt='edit-icon' />
@@ -50,8 +50,8 @@ function WarehouseDetail() {
           </div>
           <div className='w-1/2 break-words text-sm md:text-base'>
             <p className='font-bold uppercase table-header text-instock-slate mb-0.5'>contact information:</p>
-            <p className='capitalize'>{warehouseDetail.contact_phone}</p>
-            <p className='capitalize'>{warehouseDetail.contact_email}</p>
+            <p>{warehouseDetail.contact_phone}</p>
+            <p>{warehouseDetail.contact_email}</p>
           </div>
         </div>
       </div>
