@@ -10,7 +10,7 @@ export default function InventoryListItem({ item }) {
     <div
       key={id}
       className="grid row-start-1 border-b border-instock-cloud bg-white px-4 py-8 shadow-md
-    last:rounded-b-md md:grid-cols-6 md:items-center md:px-8 md:last:border-b-0 md:hover:bg-instock-cloud hover:opacity-75"
+    last:rounded-b-md md:grid-cols-6 md:items-center md:px-8 md:last:border-b-0 md:hover:bg-instock-cloud hover:opacity-75 xl:text-base"
     >
       <div className="mb-4 md:mb-0">
         <p className="text-sm font-bold uppercase text-instock-slate md:hidden">inventory item</p>
