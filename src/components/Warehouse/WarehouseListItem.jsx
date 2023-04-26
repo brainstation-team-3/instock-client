@@ -1,7 +1,7 @@
-import {useNavigate, Link} from 'react-router-dom'
-import editIcon from '@/assets/icons/edit-24px.svg';
-import deleteIcon from '@/assets/icons/delete_outline-24px.svg';
-import chevron from '@/assets/icons/chevron_right-24px.svg';
+import { useNavigate, Link } from 'react-router-dom'
+import editIcon from '@/assets/icons/edit-24px.svg'
+import deleteIcon from '@/assets/icons/delete_outline-24px.svg'
+import chevron from '@/assets/icons/chevron_right-24px.svg'
 
 function WarehouseListItem({ item, onDelete, setCurrentWarehouse }) {
   const navigate = useNavigate()
