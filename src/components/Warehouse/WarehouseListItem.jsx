@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom'
-import editIcon from '@/assets/icons/edit-24px.svg'
-import deleteIcon from '@/assets/icons/delete_outline-24px.svg'
-import chevron from '@/assets/icons/chevron_right-24px.svg'
+import {useNavigate, Link} from 'react-router-dom'
+import editIcon from '@/assets/icons/edit-24px.svg';
+import deleteIcon from '@/assets/icons/delete_outline-24px.svg';
+import chevron from '@/assets/icons/chevron_right-24px.svg';
 
 function WarehouseListItem({ item, onDelete, setCurrentWarehouse }) {
   const navigate = useNavigate()
@@ -18,10 +18,12 @@ function WarehouseListItem({ item, onDelete, setCurrentWarehouse }) {
                              last:rounded-b-md md:grid-cols-5 md:items-center md:px-10 md:last:border-b-0'>
       <div className='mb-4 md:mb-0'>
         <p className='text-sm font-bold uppercase text-instock-slate md:hidden'>warehouse</p>
-        <span className='flex items-center gap-1 py-1'>
-           <p className='cursor-pointer font-bold capitalize text-instock-indigo'>{warehouse_name}</p>
-           <img className='mt-1' src={chevron} alt='chevron-icon' />
-         </span>
+        <Link to={`/warehouse/${id}`}>
+          <span className='flex items-center gap-1 py-1'>
+             <p className='cursor-pointer font-bold capitalize text-instock-indigo'>{warehouse_name}</p>
+             <img className='mt-1' src={chevron} alt='chevron-icon' />
+          </span>
+        </Link>
       </div>
       <div className='col-start-1 mb-4 w-4/5 break-words md:col-start-2 md:mb-0'>
         <p className='text-sm font-bold uppercase text-instock-slate md:hidden'>address</p>
