@@ -56,4 +56,15 @@ async function deleteWarehouse(id) {
   }
 }
 
-export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse }
+async function getWarehouseInventory(id) {
+  try {
+    const inventoryData = await getInventory();
+    const warehouseInventory = inventoryData.filter((id) => warehouse_id === `${id}`)
+    return warehouseInventory
+  }
+  catch (error) {
+    console.log(error)
+  }
+}
+
+export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse, getWarehouseInventory }
