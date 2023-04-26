@@ -97,6 +97,7 @@ export default function AddEditWarehouse() {
             </div>
             <div className="flex w-full items-center gap-4 px-6 py-4 bg-instock-light-grey md:justify-end">
               <button type="reset"
+                      onClick={() => navigate('/warehouse')}
                       className="label-btn w-1/2 border rounded-full text-instock-cloud hover:border-instock-indigo
                         py-2 hover:text-instock-indigo md:w-28 md:px-4 duration-300 ease-in-out"
               >
