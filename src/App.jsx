@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import NavBar from '@components/NavBar/NavBar'
 import Warehouse from '@pages/Warehouse'
 import Inventory from '@pages/Inventory'
+import WarehouseDetail from '@pages/WarehouseDetail'
 import PageNotFound from '@pages/PageNotFound'
 import AddEditWarehouse from '@pages/AddEditWarehouse'
 import Footer from '@components/Footer/Footer'
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Warehouse />} />
           <Route path='/warehouse' element={<Warehouse />} />
+          <Route path='/warehouse/:id' element={<WarehouseDetail />} />
           <Route path='/inventory' element={<Inventory />} />
           <Route path="/new-warehouse" element={<AddEditWarehouse />} />
           <Route path="/warehouse/:warehouseId/edit" element={<AddEditWarehouse />} />
