@@ -21,7 +21,7 @@ function App() {
           <Route path='/inventory' element={<Inventory />} />
           <Route path="/new-warehouse" element={<AddEditWarehouse />} />
           <Route path="/warehouse/:warehouseId/edit" element={<AddEditWarehouse />} />
-          <Route path='/new-inventory-item' element={<NewInventoryItem />} />
+          <Route path="/new-inventory-item" element={<NewInventoryItem />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>
