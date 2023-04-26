@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { getWarehouse } from '@utils/helpers'
-import { useParams } from'react-router-dom'
-import { Link } from 'react-router-dom'
-import backArrow from '@assets/icons/arrow_back-24px.svg';
-import edit from '@assets/icons/edit-24px.svg';
-import axios from 'axios'
+import { useNavigate, useParams } from 'react-router-dom'
+import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
+import editIcon from '@assets/icons/edit-alt-24px.svg'
 
 function WarehouseDetail() {
 
-  const {id} =useParams();
+  const { id } = useParams()
+  const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
   const [warehouseDetail, setWarehouseDetail] = useState([])
 
@@ -16,41 +15,48 @@ function WarehouseDetail() {
     getWarehouse(id).then((data) => {
       setWarehouseDetail(data)
       setLoading(false)
-
     })
-  }, [])
+  }, [id])
 
-  if (loading) {
-    <div>Loading...</div>
-  }
-
-return (
-      <section className=' -mt-14 md:-mt-20 mx-3 md:mx-6 bg-white xl:max-w-5xl xl:mx-auto'>
-        <div className='px-6 py-7 md:px-9 xl:px-10 flex md:flex-row gap-y-4 items-center md:gap-y-0 md:gap-x-4'>
-          <Link to='/'><img src={backArrow} alt="back_arrow" className='h-7 '/></Link> 
-          <h1 className='page-header'>{warehouseDetail.warehouse_name}</h1>
-          <div className='h-9 w-9  md:flex md:w-20 md:items-center md:justify-center rounded-full bg-instock-indigo'>
-          <img src={edit} alt="edit icon " className='h-7 w-7 fill-white text-white' />
-          <span className='max-md:hidden  text-white text-h3 text-center'>Edit</span>
+  return (!loading &&
+    <div
+      className='mx-4 rounded-t-md bg-white drop-shadow-lg mt-[-4.2rem] md:mt-[-6rem] md:mx-8 xl:mx-auto xl:max-w-7xl'>
+      <div className='flex w-full border-b px-4 pt-8 pb-6 justify-start items-center border-instock-cloud md:px-10'>
+        <img className='cursor-pointer' src={ArrowBackIcon} alt='back-arrow' onClick={() => navigate('/warehouse')} />
+        <h3 className='pl-2 capitalize page-header'>
+          {warehouseDetail.warehouse_name}
+        </h3>
+        <div onClick={() => navigate(`/warehouse/${id}/edit`)}
+             className='ml-auto cursor-pointer rounded-full p-3 md:py-1.5 px-3.5 text-white bg-instock-indigo
+             md:flex md:items-center md:gap-2 md:justify-center'>
+          <img className='w-5 rounded-full' src={editIcon} alt='edit-icon' />
+          <p className='hidden capitalize md:block'>
+            edit
+          </p>
+        </div>
+      </div>
+      <div className='flex flex-col md:flex-row gap-6 p-5 md:px-10'>
+        <div className='break-words text-sm md:text-base md:w-2/5 md:border-r md:border-instock-cloud'>
+          <p className='font-bold uppercase table-header text-instock-slate mb-0.5'>warehouse address:</p>
+          <p className='md:break-normal capitalize'>
+            {`${warehouseDetail.address}, ${warehouseDetail.city}, ${warehouseDetail.country}`}
+          </p>
+        </div>
+        <div className='flex md:w-3/5 justify-between gap-3 md:ml-7'>
+          <div className='w-1/2 break-words text-sm md:text-base '>
+            <p className='font-bold uppercase table-header text-instock-slate mb-0.5'>contact name:</p>
+            <p className='capitalize'>{warehouseDetail.contact_name}</p>
+            <p className='capitalize'>{warehouseDetail.contact_position || 'Warehouse Manager'}</p>
+          </div>
+          <div className='w-1/2 break-words text-sm md:text-base'>
+            <p className='font-bold uppercase table-header text-instock-slate mb-0.5'>contact information:</p>
+            <p>{warehouseDetail.contact_phone}</p>
+            <p>{warehouseDetail.contact_email}</p>
           </div>
         </div>
-        <div className='flex flex-wrap md:justify-between p-4 h-48 md:h-auto border-y-2 md:border-b-0 border-solid border-instock-cloud'>
-        <div className= 'max-md:basis-5/6 md:basis-2/6   xl:grow box-border p-2 md:px-0 md:pr-20'>
-              <p className='table-header'>WAREHOUSE ADDRESS:</p>
-              <p className='body-med md:break-normal'>{`${warehouseDetail.address}, ${warehouseDetail.city}, ${warehouseDetail.country}`}</p>
-            </div>
-            <div className=' max-md:basis-3/6 md:basis-2/6  md:border-l-2 md:border-solid md:border-instock-cloud box-border  max-md:p-2 md:pl-12'>
-              <p className='table-header'>CONTACT NAME:</p>
-              <p className='body-med'>{warehouseDetail.contact_name}</p>
-              <p className='body-med'>{warehouseDetail.contact_position}</p>
-            </div>
-            <div className=' max-md:basis-3/6 md:basis-1/6  box-border  p-2 md:p-0 xl:basis-4/12'>
-              <p className='table-header'>CONTACT INFORMATION:</p>
-              <p className='body-med'>{warehouseDetail.contact_phone}</p> 
-              <p className='body-med'>{warehouseDetail.contact_email}</p>
-            </div>
-        </div>
-  </section>
-)
+      </div>
+    </div>
+  )
 }
+
 export default WarehouseDetail
