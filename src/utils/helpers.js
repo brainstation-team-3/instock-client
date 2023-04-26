@@ -66,4 +66,6 @@ async function getInventory() {
   }
 }
 
-export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse, getInventory }
+const { format } = new Intl.NumberFormat('en-US')
+
+export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse, getInventory, format }

@@ -28,7 +28,7 @@ export default function Inventory() {
     mt-[-4.2rem] md:mt-[-6.4rem] border-instock-cloud md:border-b-0 md:flex md:gap-4 md:justify-end md:items-start">
       <h3 className="mb-6 text-3xl font-bold md:mr-auto md:mb-0 md:text-4xl">Inventory</h3>
         <SearchBar />
-        <Link to="/"
+        <Link to="/new-inventory-item"
               className="block w-full rounded-full px-6 py-3 text-center text-sm font-bold text-white
               bg-instock-indigo hover:bg-instock-black duration-300 ease-in-out md:w-52 md:py-2">
           + Add New Item
