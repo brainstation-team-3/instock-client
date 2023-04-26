@@ -1,8 +1,11 @@
+import {useNavigate, Link} from 'react-router-dom'
 import editIcon from '@/assets/icons/edit-24px.svg';
 import deleteIcon from '@/assets/icons/delete_outline-24px.svg';
 import chevron from '@/assets/icons/chevron_right-24px.svg';
 
 function WarehouseListItem({item}) {
+  const navigate = useNavigate();
+
   const {id, warehouse_name, address, city, country, contact_name, contact_phone, contact_email} = item;
 
   return (
@@ -11,10 +14,12 @@ function WarehouseListItem({item}) {
     >
       <div className="mb-4 md:mb-0">
         <p className="text-sm font-bold uppercase text-instock-slate md:hidden">warehouse</p>
+          <Link to={`/warehouse/${id}`}>
         <span className="flex items-center gap-1 py-1">
            <p className="cursor-pointer font-bold capitalize text-instock-indigo">{warehouse_name}</p>
            <img className="mt-1" src={chevron} alt="chevron-icon"/>
          </span>
+          </Link>
       </div>
       <div className="col-start-1 mb-4 w-4/5 break-words md:col-start-2 md:mb-0">
         <p className="text-sm font-bold uppercase text-instock-slate md:hidden">address</p>
@@ -29,9 +34,14 @@ function WarehouseListItem({item}) {
         <p>{contact_phone}</p>
         <p>{contact_email}</p>
       </div>
-      <div className="col-span-2 flex items-center justify-between md:col-span-1 md:mr-2 md:mb-0 md:justify-end md:gap-4">
+      <div
+        className="col-span-2 flex items-center justify-between md:col-span-1 md:mr-2 md:mb-0 md:justify-end md:gap-4">
         <img className="cursor-pointer md:w-7" src={deleteIcon} alt="delete-icon"/>
-        <img className="cursor-pointer justify-self-end md:w-7" src={editIcon} alt="delete-icon"/>
+        <img onClick={() => navigate(`/warehouse/${id}/edit`)}
+             className="cursor-pointer justify-self-end md:w-7"
+             src={editIcon}
+             alt="delete-icon"
+        />
       </div>
     </div>
   )
