@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
+import { getInventoryItem } from '@utils/helpers'
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
 import editIcon from '@assets/icons/edit-alt-24px.svg'
 
@@ -8,10 +9,10 @@ export default function InventoryItemDetail() {
   const navigate = useNavigate()
 
   const [loading, setLoading] = useState(true)
-  const [inventoryDetail, setInventoryDetail] = useState([])
+  const [inventoryDetail, setInventoryDetail] = useState({})
 
   useEffect(() => {
-    getInventory(id).then((data) => {
+    getInventoryItem(id).then((data) => {
       setInventoryDetail(data)
       setLoading(false)
     })
@@ -32,19 +33,30 @@ export default function InventoryItemDetail() {
             <p className="hidden capitalize md:block">edit</p>
           </div>
         </div>
-        <div className='border-status-cloud mx-[-1rem] border-b p-4 md:mx-0 md:my-4 md:w-1/2 md:border-b-0 md:border-r md:px-6 md:py-0'>
-            <p className='table-header'>item description:</p>
-            <p className='body-med capitalize'>{inventoryDetail.description}</p>
-            <p className='table-header'>category:</p>
-            <p className='body-med capitalize'>{inventoryDetail.category}</p>
-        </div>
-        <div>
-            <p className='table-header'>status:</p>
-            <p className='body-med capitalize'>{inventoryDetail.status}</p>
-            <p className='table-header'>quantity:</p>
-            <p className='body-med capitalize'>{inventoryDetail.quantity}</p>
-            <p className='table-header'>warehouse:</p>
-            <p className='body-med capitalize'>{inventoryDetail.warehouse}</p>
+        <div className='md:flex md:justify-center'>
+            <div className='border-status-cloud mx-[-1rem] pt-4 px-8 md:mx-0 md:my-4 md:w-1/2 md:border-b-0 md:border-r md:px-6 md:py-0'>
+                <p className='table-header pb-1'>item description:</p>
+                <p className='body-med pb-4'>{inventoryDetail.description}</p>
+                <p className='table-header pb-1'>category:</p>
+                <p className='body-med capitalize'>{inventoryDetail.category}</p>
+            </div>
+            <div className='flex flex-wrap border-status-cloud mx-[-1rem] p-4 px-8 md:mx-0 md:my-4 md:w-1/2 md:border-b-0 md:border-l md:px-6 md:py-0'>
+                <div className='w-1/2'>
+                    <p className='table-header pb-1'>status:</p>
+                    <p className={`${inventoryDetail.quantity ? 'text-instock-green bg-instock-green-o' : 'text-instock-red bg-instock-red-o'} 
+                        body-sm py-1 px-2 w-fit rounded-3xl text-center uppercase whitespace-nowrap`}>
+                            {inventoryDetail.status}
+                    </p>
+                </div>
+                <div className='w-1/2'>
+                    <p className='table-header pb-1'>quantity:</p>
+                    <p className='body-med capitalize pb-4'>{inventoryDetail.quantity}</p>
+                </div>
+                <div>
+                    <p className='table-header pb-1'>warehouse:</p>
+                    <p className='body-med capitalize'>{inventoryDetail.warehouse_name}</p>
+                </div>
+            </div>
         </div>
       </div>
     )
