@@ -40,8 +40,11 @@ function WarehouseListItem({ item, onDelete, setCurrentWarehouse }) {
       </div>
       <div
         className='col-span-2 flex items-center justify-between md:col-span-1 md:mr-2 md:mb-0 md:justify-end md:gap-4'>
-        <img onClick={deleteHandler} className='cursor-pointer md:w-7' src={deleteIcon}
-             alt='delete-icon' />
+        <img onClick={deleteHandler}
+             className='cursor-pointer md:w-7'
+             src={deleteIcon}
+             alt='delete-icon'
+        />
         <img onClick={() => navigate(`/warehouse/${id}/edit`)}
              className='cursor-pointer justify-self-end md:w-7'
              src={editIcon}

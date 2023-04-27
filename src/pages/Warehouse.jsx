@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import WarehouseList from '@components/Warehouse/WarehouseList'
 import SearchBar from '@components/Searchbar/SearchBar'
 import { getWarehouses } from '@utils/helpers'
-import Modal from '@components/Modal/Modal.jsx'
+import Modal from '@components/Modal/Modal'
 
 function Warehouse() {
 

@@ -7,7 +7,7 @@ export default function NavItem({to, name, active, setActiveLink}) {
     <NavLink
       className={`
         ${active === name ? 'bg-instock-black' : ''} 
-        block text-sm md:text-base rounded-full py-2 px-8 
+        block capitalize text-sm md:text-base rounded-full py-2 px-8 
         text-center align-middle text-instock-cloud
         hover:text-instock-white hover:underline
       `}

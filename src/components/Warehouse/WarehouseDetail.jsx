@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getWarehouse } from '@utils/helpers'
+import { getWarehouse } from '@utils/helpers.js'
 import { useNavigate, useParams } from 'react-router-dom'
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
 import editIcon from '@assets/icons/edit-alt-24px.svg'
