@@ -8,7 +8,6 @@ import PageNotFound from '@pages/PageNotFound'
 import AddEditWarehouse from '@pages/AddEditWarehouse'
 import Footer from '@components/Footer/Footer'
 import NewInventoryItem from '@components/Inventory/NewInventoryItem'
-import WarehouseInventoryList from '@components/Warehouse/WarehouseInventoryList'
 import InventoryItemDetail from '@components/Inventory/InventoryItemDetail'
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
           <Route path="/new-inventory-item" element={<NewInventoryItem />} />
           <Route path="/new-warehouse" element={<AddEditWarehouse />} />
           <Route path="/warehouse/:warehouseId/edit" element={<AddEditWarehouse />} />
-          <Route path='/warehouse/:warehouseId/inventory' elementh={<WarehouseInventoryList />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>
