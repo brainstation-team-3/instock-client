@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 import {useNavigate, useParams} from 'react-router-dom'
-import FormField from '@components/Form/FormField'
-import {createWarehouse, editWarehouse, getWarehouse} from "@utils/helpers"
+import FormField from '@components/Form/FormField.jsx'
+import {createWarehouse, editWarehouse, getWarehouse} from "@utils/helpers.js"
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
 
 export default function AddEditWarehouse() {

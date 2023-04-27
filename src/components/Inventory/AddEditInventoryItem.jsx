@@ -10,7 +10,7 @@ import {
 } from '@utils/helpers'
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
 
-export default function NewInventoryItem() {
+export default function AddEditInventoryItem() {
 
   const { inventoryId } = useParams()
   const navigate = useNavigate()
