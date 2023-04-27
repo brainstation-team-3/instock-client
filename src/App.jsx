@@ -7,7 +7,6 @@ import WarehouseDetail from '@pages/WarehouseDetail'
 import PageNotFound from '@pages/PageNotFound'
 import AddEditWarehouse from '@pages/AddEditWarehouse'
 import Footer from '@components/Footer/Footer'
-// import WarehouseInventoryList from '@components/Warehouse/WarehouseInventoryList'
 import InventoryItemDetail from '@components/Inventory/InventoryItemDetail'
 
 function App() {
