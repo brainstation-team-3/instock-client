@@ -3,12 +3,12 @@ import { Route, Routes } from 'react-router-dom'
 import NavBar from '@components/NavBar/NavBar'
 import Warehouse from '@pages/Warehouse'
 import Inventory from '@pages/Inventory'
-import WarehouseDetail from '@pages/WarehouseDetail'
+import WarehouseDetail from '@components/Warehouse/WarehouseDetail.jsx'
 import PageNotFound from '@pages/PageNotFound'
-import AddEditWarehouse from '@pages/AddEditWarehouse'
+import AddEditWarehouse from '@components/Warehouse/AddEditWarehouse.jsx'
 import Footer from '@components/Footer/Footer'
-import NewInventoryItem from '@components/Inventory/NewInventoryItem'
-import WarehouseInventoryList from '@components/Warehouse/WarehouseInventoryList'
+import AddEditInventoryItem from '@components/Inventory/AddEditInventoryItem.jsx'
+import InventoryItemDetail from '@components/Inventory/InventoryItemDetail'
 
 function App() {
   return (
@@ -20,10 +20,12 @@ function App() {
           <Route path='/warehouse' element={<Warehouse />} />
           <Route path='/warehouse/:id' element={<WarehouseDetail />} />
           <Route path='/inventory' element={<Inventory />} />
+          <Route path='/inventory/:id' element={<InventoryItemDetail />} />
+          <Route path="/new-inventory-item" element={<AddEditInventoryItem />} />
           <Route path="/new-warehouse" element={<AddEditWarehouse />} />
           <Route path="/warehouse/:warehouseId/edit" element={<AddEditWarehouse />} />
-          <Route path='/warehouse/:warehouseId/inventory' element={<WarehouseInventoryList />} />
-          <Route path="/new-inventory-item" element={<NewInventoryItem />} />
+          <Route path="/new-inventory-item" element={<AddEditInventoryItem />} />
+          <Route path="/inventory/:inventoryId/edit" element={<AddEditInventoryItem />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>

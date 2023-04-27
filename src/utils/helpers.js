@@ -1,7 +1,7 @@
 import axios from '@services/axios'
 import routes from '@services/routes.json'
 
-async function getWarehouses() {
+export async function getWarehouses() {
   try {
     const response = await axios.get(routes.warehouse);
     if (response.status === 200) {
@@ -12,7 +12,7 @@ async function getWarehouses() {
   }
 }
 
-async function getWarehouse(id) {
+export async function getWarehouse(id) {
   try {
     const response = await axios.get(`${routes.warehouse}/${id}`);
     if (response.status === 200) {
@@ -23,7 +23,7 @@ async function getWarehouse(id) {
   }
 }
 
-async function createWarehouse(data) {
+export async function createWarehouse(data) {
   try {
     const response = await axios.post(routes.warehouse, data);
     if (response.status === 201) {
@@ -34,7 +34,7 @@ async function createWarehouse(data) {
   }
 }
 
-async function editWarehouse(id, data) {
+export async function editWarehouse(id, data) {
   try {
     const response = await axios.put(`${routes.warehouse}/${id}`, data);
     if (response.status === 200) {
@@ -45,7 +45,7 @@ async function editWarehouse(id, data) {
   }
 }
 
-async function deleteWarehouse(id) {
+export async function deleteWarehouse(id) {
   try {
     const response = await axios.delete(`${routes.warehouse}/${id}`);
     if (response.status === 200) {
@@ -56,7 +56,7 @@ async function deleteWarehouse(id) {
   }
 }
 
-async function getInventory() {
+export async function getInventory() {
   try {
     const response = await axios.get(routes.inventory);
     if (response.status === 200) {
@@ -67,7 +67,18 @@ async function getInventory() {
   }
 }
 
-async function createInventoryItem(data) {
+export async function getInventoryItem(id) {
+  try {
+    const response = await axios.get(`${routes.inventory}/${id}`);
+    if (response.status === 200) {
+      return response.data
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function createInventoryItem(data) {
   try {
     const response = await axios.post(routes.inventory, data);
     if (response.status === 201) {
@@ -78,7 +89,18 @@ async function createInventoryItem(data) {
   }
 }
 
-async function getCategoryNames() {
+export async function deleteInventoryItem(id) {
+  try {
+    const response = await axios.delete(`${routes.inventory}/${id}`);
+    if (response.status === 200) {
+      return response.data
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getCategoryNames() {
   try {
     const inventoryData = await getInventory()
     const allCategories = inventoryData.map((item) => item.category)
@@ -90,7 +112,7 @@ async function getCategoryNames() {
   }
 }
 
-async function getWarehouseNames() {
+export async function getWarehouseNames() {
   try {
     const warehouseData = await getWarehouses()
     const allWarehouses = warehouseData.map((warehouse) => {
@@ -108,18 +130,4 @@ async function getWarehouseNames() {
   }
 }
 
-async function getWarehouseInventory(id) {
-  try {
-    const inventoryData = await axios.get(`${routes.warehouse}/${id}/inventory`);
-    if (inventoryData.status === 200) {
-      return inventoryData
-    }
-
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-const { format } = new Intl.NumberFormat('en-US')
-
-export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse, getInventory, createInventoryItem, getCategoryNames, getWarehouseNames, getWarehouseInventory, format}
+export const { format } = new Intl.NumberFormat('en-US')
