@@ -55,6 +55,7 @@ async function deleteWarehouse(id) {
     console.log(error)
   }
 }
+
 async function getInventory() {
   try {
     const response = await axios.get(routes.inventory);
@@ -66,6 +67,47 @@ async function getInventory() {
   }
 }
 
+async function createInventoryItem(data) {
+  try {
+    const response = await axios.post(routes.inventory, data);
+    if (response.status === 201) {
+      return response.data
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function getCategoryNames() {
+  try {
+    const inventoryData = await getInventory()
+    const allCategories = inventoryData.map((item) => item.category)
+
+    return [...new Set(allCategories)]
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function getWarehouseNames() {
+  try {
+    const warehouseData = await getWarehouses()
+    const allWarehouses = warehouseData.map((warehouse) => {
+
+      return {
+        id: warehouse.id,
+        warehouseName: warehouse.warehouse_name
+      }
+    })
+
+    return [...new Set(allWarehouses)]
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const { format } = new Intl.NumberFormat('en-US')
 
-export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse, getInventory, format }
+export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse, getInventory, createInventoryItem, getCategoryNames, getWarehouseNames, format}
