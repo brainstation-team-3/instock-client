@@ -55,4 +55,15 @@
   .input-text {
     @apply text-[0.813rem] md:text-sm font-normal text-instock-black
   }
+
+  .btn-primary {
+    @apply label-btn w-1/2 py-2 rounded-full bg-instock-indigo capitalize text-instock-white
+    hover:bg-instock-graphite md:w-32 md:px-4 md:mr-8 duration-300 ease-in-out
+  }
+
+  .btn-alternate {
+    @apply label-btn w-1/2 border rounded-full text-instock-cloud hover:border-instock-indigo
+    py-2 hover:text-instock-indigo md:w-28 md:px-4 duration-300 ease-in-out
+  }
+
 }
