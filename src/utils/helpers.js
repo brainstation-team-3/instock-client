@@ -110,11 +110,12 @@ async function getWarehouseNames() {
 
 async function getWarehouseInventory(id) {
   try {
-    const inventoryData = await getInventory();
-    const warehouseInventory = inventoryData.filter((id) => warehouse_id === `${id}`)
-    return warehouseInventory
-  }
-  catch (error) {
+    const inventoryData = await axios.get(`${routes.warehouse}/${id}/inventory`);
+    if (inventoryData.status === 200) {
+      return inventoryData
+    }
+
+  } catch (error) {
     console.log(error)
   }
 }
