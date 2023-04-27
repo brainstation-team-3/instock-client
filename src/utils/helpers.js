@@ -108,6 +108,17 @@ async function getWarehouseNames() {
   }
 }
 
+async function getInventoryItem(id) {
+  try {
+    const response = await axios.get(`${routes.inventory}/${id}`);
+    if (response.status === 200) {
+      return response.data
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const { format } = new Intl.NumberFormat('en-US')
 
-export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse, getInventory, createInventoryItem, getCategoryNames, getWarehouseNames, format}
+export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse, getInventory, createInventoryItem, getCategoryNames, getWarehouseNames, getInventoryItem, format }
