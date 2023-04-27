@@ -93,7 +93,7 @@ export default function AddEditInventoryItem() {
     <>
       <div className='mx-4 rounded-md bg-white shadow-md mt-[-4.2rem] md:mt-[-6rem] md:mx-8 xl:mx-auto xl:max-w-7xl'>
         <div className='flex w-full border-b pt-8 pb-6 pl-4 justify-left border-status-cloud md:pl-10'>
-          <img className='cursor-pointer' src={ArrowBackIcon} alt='back-arrow' onClick={() => navigate('/inventory')} />
+          <img className='cursor-pointer' src={ArrowBackIcon} alt='back-arrow' onClick={() => navigate(-1)} />
           <h3 className='pl-2 page-header capitalize'>
             {inventoryId ? 'edit inventory item' : 'add new inventory item'}
           </h3>

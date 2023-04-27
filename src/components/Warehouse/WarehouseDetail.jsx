@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react'
-import { getWarehouse } from '@utils/helpers.js'
+import React, { useState, useEffect } from 'react'
+import { getInventoryItemsByWarehouse, getWarehouse } from '@utils/helpers'
 import { useNavigate, useParams } from 'react-router-dom'
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
 import editIcon from '@assets/icons/edit-alt-24px.svg'
+import InventoryListItem from '@components/Inventory/InventoryListItem'
+import Modal from '@components/Modal/Modal'
+import TableHeader from '@components/Table/TableHeader'
 
 function WarehouseDetail() {
 
@@ -10,19 +13,41 @@ function WarehouseDetail() {
   const navigate = useNavigate()
   const [loading, setLoading] = useState(true)
   const [warehouseDetail, setWarehouseDetail] = useState([])
+  const [inventoryList, setInventoryList] = useState([])
+  const [isOpen, setIsOpen] = useState(false)
+  const [currentInventoryItem, setCurrentInventoryItem] = useState({})
+
+  const inventoryHeaders = ['inventory item', 'category', 'status', 'qty', 'warehouse', 'actions']
 
   useEffect(() => {
     getWarehouse(id).then((data) => {
       setWarehouseDetail(data)
+    })
+
+    getInventoryItemsByWarehouse(id).then((data) => {
+      setInventoryList(data)
       setLoading(false)
     })
   }, [id])
 
+  const closeModal = () => {
+    setIsOpen(false)
+    document.body.style.overflowY = 'visible'
+  }
+
   return (!loading &&
     <div
       className='mx-4 rounded-t-md bg-white drop-shadow-lg mt-[-4.2rem] md:mt-[-6rem] md:mx-8 xl:mx-auto xl:max-w-7xl'>
+      <Modal
+        type='inventory'
+        id={currentInventoryItem.id}
+        name={currentInventoryItem.item_name}
+        open={isOpen}
+        onClose={closeModal}
+        setCurrentList={setInventoryList}
+      />
       <div className='flex w-full border-b px-4 pt-8 pb-6 justify-start items-center border-instock-cloud md:px-10'>
-        <img className='cursor-pointer' src={ArrowBackIcon} alt='back-arrow' onClick={() => navigate('/warehouse')} />
+        <img className='cursor-pointer' src={ArrowBackIcon} alt='back-arrow' onClick={() => navigate(-1)} />
         <h3 className='pl-2 capitalize page-header'>
           {warehouseDetail.warehouse_name}
         </h3>
@@ -55,6 +80,16 @@ function WarehouseDetail() {
           </div>
         </div>
       </div>
+      <TableHeader columns={inventoryHeaders} type='inventory'/>
+      {inventoryList.map((item) => (
+        <InventoryListItem
+          key={item.id}
+          item={item}
+          onDelete={setIsOpen}
+          setCurrentInventoryItem={setCurrentInventoryItem}
+          warehouse={warehouseDetail.warehouse_name}
+        />
+      ))}
     </div>
   )
 }

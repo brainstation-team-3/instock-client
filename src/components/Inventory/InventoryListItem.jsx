@@ -4,7 +4,7 @@ import editIcon from '@/assets/icons/edit-24px.svg'
 import deleteIcon from '@/assets/icons/delete_outline-24px.svg'
 import chevron from '@/assets/icons/chevron_right-24px.svg'
 
-export default function InventoryListItem({ item, onDelete, setCurrentInventoryItem }) {
+export default function InventoryListItem({ item, onDelete, setCurrentInventoryItem, warehouse }) {
   const navigate = useNavigate()
 
   const { id, warehouse_name, status, item_name, quantity, category } = item
@@ -13,10 +13,9 @@ export default function InventoryListItem({ item, onDelete, setCurrentInventoryI
     setCurrentInventoryItem(item)
     onDelete(true)
   }
-
   return (
-    <div key={id} className='grid grid-cols-2 border-b bg-white px-6 py-8 shadow-md border-instock-cloud
-    last:rounded-b-md md:grid-cols-6 md:items-center md:gap-4 md:px-10 md:last:border-b-0'
+    <div key={id} className={`grid grid-cols-2 border-b bg-white px-6 py-8 shadow-md border-instock-cloud md:grid-cols-6
+    last:rounded-b-md md:items-center md:gap-4 md:px-10 md:last:border-b-0`}
     >
       <div className='mb-4 md:mb-0 md:col-start-1'>
         <p className='text-sm font-bold uppercase text-instock-slate md:hidden'>inventory item</p>
@@ -45,7 +44,7 @@ export default function InventoryListItem({ item, onDelete, setCurrentInventoryI
       </div>
       <div className='col-start-2 mb-4 break-words md:mb-0 md:col-start-5'>
         <p className='text-sm font-bold uppercase text-instock-slate md:hidden'>warehouse</p>
-        <p>{warehouse_name}</p>
+        <p>{warehouse_name || warehouse}</p>
       </div>
       <div
         className='col-span-2 flex items-center justify-between md:col-span-1 md:mr-2 md:mb-0 md:justify-end md:gap-4 md:col-start-6'>
@@ -54,7 +53,7 @@ export default function InventoryListItem({ item, onDelete, setCurrentInventoryI
              src={deleteIcon}
              alt='delete-icon'
         />
-        <img onClick={(e) => navigate(`/inventory/${id}/edit`)}
+        <img onClick={() => navigate(`/inventory/${id}/edit`)}
              className='cursor-pointer justify-self-end md:w-7'
              src={editIcon}
              alt='delete-icon'

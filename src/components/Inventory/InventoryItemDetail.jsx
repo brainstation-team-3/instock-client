@@ -23,7 +23,7 @@ export default function InventoryItemDetail() {
       <div
         className='mx-4 rounded-t-md bg-white drop-shadow-lg mt-[-4.2rem] md:mt-[-6rem] md:mx-8 xl:mx-auto xl:max-w-7xl'>
         <div className='flex w-full items-center justify-start border-b px-4 pt-8 pb-6 border-instock-cloud md:px-10'>
-          <img className='cursor-pointer' src={ArrowBackIcon} alt='back-arrow' onClick={() => navigate('/inventory')} />
+          <img className='cursor-pointer' src={ArrowBackIcon} alt='back-arrow' onClick={() => navigate(-1)} />
           <h3 className='pl-2 capitalize page-header'>{inventoryDetail.item_name}</h3>
           <div
             onClick={() => navigate(`/inventory/${id}/edit`)}

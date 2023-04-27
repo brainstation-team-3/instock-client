@@ -130,4 +130,15 @@ export async function getWarehouseNames() {
   }
 }
 
+export async function getInventoryItemsByWarehouse(id) {
+  try {
+    const response = await axios.get(`${routes.warehouse}/${id}/inventory`);
+    if (response.status === 200) {
+      return response.data
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const { format } = new Intl.NumberFormat('en-US')
