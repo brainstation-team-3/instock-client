@@ -58,7 +58,7 @@
 
   .btn-primary {
     @apply label-btn w-1/2 py-2 rounded-full bg-instock-indigo capitalize text-instock-white
-    hover:bg-instock-graphite md:w-32 md:px-4 md:mr-8 duration-300 ease-in-out
+    hover:bg-instock-graphite md:w-36 md:px-4 md:mr-8 duration-300 ease-in-out whitespace-nowrap
   }
 
   .btn-alternate {
