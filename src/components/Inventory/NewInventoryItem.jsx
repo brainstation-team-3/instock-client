@@ -18,7 +18,7 @@ export default function NewInventoryItem() {
   const [category, setCategory] = useState('')
 
   const [status, setStatus] = useState('in stock')
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState('0')
   const [warehouse, setWarehouse] = useState('')
 
   const findWarehouseId = (name, warehouseList) => {
@@ -41,18 +41,23 @@ export default function NewInventoryItem() {
     e.preventDefault()
 
     const data = {
-      warehouse_id: warehouseId,
-      item_name: itemName,
-      description: description,
-      category: category,
-      status: status,
-      quantity: quantity,
+      'warehouse_id': warehouseId,
+      'item_name': itemName,
+      'description': description,
+      'category': category,
+      'status': status,
+      'quantity': Number(quantity),
     }
 
-    createInventoryItem(data).then(() => resetForm())
+    createInventoryItem(data)
+      .then((res) => {
+        if (res.status === 200) resetForm()
+      })
+      .catch(err => console.log(err.message))
   }
 
   useEffect(() => {
+
     getCategoryNames().then((data) => {
       setCategoryList(data)
     })
@@ -60,18 +65,19 @@ export default function NewInventoryItem() {
     getWarehouseNames().then((data) => {
       setWarehouseList(data)
     })
+
   }, [])
 
   return (
     <>
-      <div className="mx-4 mt-[-4.2rem] rounded-md bg-white shadow-md md:mx-8 md:mt-[-6rem] xl:mx-auto xl:max-w-7xl">
-        <div className="justify-left border-status-cloud inline-flex w-full border-b pb-6 pl-4 pt-8">
-          <img className="cursor-pointer" src={ArrowBackIcon} alt="back-arrow" onClick={() => navigate('/inventory')} />
-          <h3 className="page-header pl-2">Add New Inventory Item</h3>
+      <div className='mx-4 rounded-md bg-white shadow-md mt-[-4.2rem] md:mt-[-6rem] md:mx-8 xl:mx-auto xl:max-w-7xl'>
+        <div className='flex w-full border-b pt-8 pb-6 pl-4 justify-left border-status-cloud md:pl-10'>
+          <img className='cursor-pointer' src={ArrowBackIcon} alt='back-arrow' onClick={() => navigate('/inventory')} />
+          <h3 className='pl-2 page-header'>Add New Inventory Item</h3>
         </div>
-        <div className="md:flex md:justify-center">
-          <form className="mb-6 rounded-b-md border-b pt-4 md:mb-0" onSubmit={submitHandler}>
-            <div className="section md:mb-6 md:flex">
+        <div className='md:flex'>
+          <form className='mb-6 w-full rounded-b-md border-b pt-4 md:mb-0' onSubmit={submitHandler}>
+            <div className='md:mb-6 md:flex md:w-full md:px-6'>
               <ItemDetails
                 categoryList={categoryList}
                 itemName={itemName}
@@ -92,11 +98,18 @@ export default function NewInventoryItem() {
                 setWarehouse={setWarehouse}
               />
             </div>
-            <div className="bg-status-light-grey flex w-full items-center gap-4 px-6 py-4 md:justify-end">
-              <button type="reset" onClick={resetForm} className="label-btn btn-alternate">
+            <div className='flex w-full items-center gap-4 px-4 py-4 bg-instock-light-grey md:justify-end'>
+              <button
+                type='reset'
+                onClick={resetForm}
+                className='btn-alternate'
+              >
                 Cancel
               </button>
-              <button type="submit" className="label-btn btn-primary">
+              <button
+                type='submit'
+                className='btn-primary'
+              >
                 + Add Item
               </button>
             </div>
