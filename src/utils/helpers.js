@@ -55,6 +55,7 @@ async function deleteWarehouse(id) {
     console.log(error)
   }
 }
+
 async function getInventory() {
   try {
     const response = await axios.get(routes.inventory);
@@ -66,6 +67,17 @@ async function getInventory() {
   }
 }
 
+async function getInventoryItem(id) {
+  try {
+    const response = await axios.get(`${routes.inventory}/${id}`);
+    if (response.status === 200) {
+      return response.data
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 const { format } = new Intl.NumberFormat('en-US')
 
-export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse, getInventory, format }
+export { getWarehouses, getWarehouse, createWarehouse, editWarehouse, deleteWarehouse, getInventory, getInventoryItem, format }
