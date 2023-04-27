@@ -1,7 +1,7 @@
 import InventoryListItem from './InventoryListItem'
 import sortIcon from '@assets/icons/sort-24px.svg'
 
-export default function InventoryList({ inventoryList }) {
+export default function InventoryList({ inventoryList, onDelete, setCurrentInventoryItem }) {
 
   const inventoryHeaders = ['inventory item', 'category', 'status', 'qty', 'warehouse', 'actions']
 
@@ -16,7 +16,14 @@ export default function InventoryList({ inventoryList }) {
           </span>
         ))}
       </div>
-    {inventoryList.map((item, index) => (<InventoryListItem key={index} item={item}/>))}
+    {inventoryList.map((item) => (
+      <InventoryListItem
+        key={item.id}
+        item={item}
+        onDelete={onDelete}
+        setCurrentInventoryItem={setCurrentInventoryItem}
+      />
+    ))}
   </div>
   )
 }
