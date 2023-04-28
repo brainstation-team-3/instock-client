@@ -19,9 +19,9 @@ function WarehouseListItem({ item, onDelete, setCurrentWarehouse }) {
       <div className='mb-4 md:mb-0'>
         <p className='text-sm font-bold uppercase text-instock-slate md:hidden'>warehouse</p>
         <Link to={`/warehouse/${id}`}>
-          <span className='flex items-center gap-1 py-1'>
+          <span className='flex items-center gap-1 py-1 group'>
              <p className='cursor-pointer font-bold capitalize text-instock-indigo'>{warehouse_name}</p>
-             <img className='mt-1' src={chevron} alt='chevron-icon' />
+             <img className='mt-1 group-hover:translate-x-0.5' src={chevron} alt='chevron-icon' />
           </span>
         </Link>
       </div>

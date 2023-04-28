@@ -20,10 +20,10 @@ export default function InventoryListItem({ item, onDelete, setCurrentInventoryI
       <div className='mb-4 md:mb-0 md:col-start-1'>
         <p className='text-sm font-bold uppercase text-instock-slate md:hidden'>inventory item</p>
         <Link to={`/inventory/${id}`}>
-          <span className='flex justify-start items-center gap-0.5 py-1'>
+          <span className='flex justify-start items-center gap-0.5 py-1 group'>
              <p
                className='cursor-pointer font-bold capitalize text-instock-indigo min-w-fit whitespace-nowrap'>{item_name}</p>
-             <img className='mt-1' src={chevron} alt='chevron-icon' />
+             <img className='mt-1 group-hover:translate-x-0.5' src={chevron} alt='chevron-icon' />
            </span>
         </Link>
       </div>
