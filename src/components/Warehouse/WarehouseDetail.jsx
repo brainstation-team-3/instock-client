@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getInventoryItemsByWarehouse, getWarehouse } from '@utils/helpers'
 import { useNavigate, useParams } from 'react-router-dom'
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
@@ -17,7 +17,7 @@ function WarehouseDetail() {
   const [isOpen, setIsOpen] = useState(false)
   const [currentInventoryItem, setCurrentInventoryItem] = useState({})
 
-  const inventoryHeaders = ['inventory item', 'category', 'status', 'qty', 'warehouse', 'actions']
+  const inventoryHeaders = ['inventory item', 'category', 'status', 'qty', 'actions']
 
   useEffect(() => {
     getWarehouse(id).then((data) => {
@@ -80,7 +80,7 @@ function WarehouseDetail() {
           </div>
         </div>
       </div>
-      <TableHeader columns={inventoryHeaders} type='inventory'/>
+      <TableHeader columns={inventoryHeaders} type='inventory' />
       {inventoryList.map((item) => (
         <InventoryListItem
           key={item.id}

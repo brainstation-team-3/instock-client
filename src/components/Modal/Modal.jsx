@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom'
-import { deleteWarehouse, deleteInventoryItem } from '@utils/helpers.js'
+import { deleteInventoryItem, deleteWarehouse } from '@utils/helpers.js'
 import closeIcon from '@assets/icons/close-24px.svg'
 
 const Modal = ({ type, id, name, open, onClose, setCurrentList }) => {

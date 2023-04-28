@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getInventoryItem, format } from '@utils/helpers'
+import { format, getInventoryItem } from '@utils/helpers'
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
 import editIcon from '@assets/icons/edit-alt-24px.svg'
 

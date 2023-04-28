@@ -1,8 +1,8 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 
-export default function NavItem({to, name, active, setActiveLink}) {
+export default function NavItem({ to, name, active, setActiveLink }) {
   return (
     <NavLink
       className={`

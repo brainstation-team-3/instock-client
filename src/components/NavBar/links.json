@@ -1,10 +1,10 @@
 [
-    {
-      "path": "/warehouse",
-      "name": "warehouse"
-    },
-    {
-      "path": "/inventory",
-      "name": "inventory"
-    }
+  {
+    "path": "/warehouse",
+    "name": "warehouse"
+  },
+  {
+    "path": "/inventory",
+    "name": "inventory"
+  }
 ]

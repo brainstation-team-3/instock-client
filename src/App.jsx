@@ -21,12 +21,12 @@ function App() {
           <Route path='/warehouse/:id' element={<WarehouseDetail />} />
           <Route path='/inventory' element={<Inventory />} />
           <Route path='/inventory/:id' element={<InventoryItemDetail />} />
-          <Route path="/new-inventory-item" element={<AddEditInventoryItem />} />
-          <Route path="/new-warehouse" element={<AddEditWarehouse />} />
-          <Route path="/warehouse/:warehouseId/edit" element={<AddEditWarehouse />} />
-          <Route path="/new-inventory-item" element={<AddEditInventoryItem />} />
-          <Route path="/inventory/:inventoryId/edit" element={<AddEditInventoryItem />} />
-          <Route path="/warehouse/:warehouseId/inventory/:inventoryId/edit" element={<AddEditInventoryItem />} />
+          <Route path='/new-inventory-item' element={<AddEditInventoryItem />} />
+          <Route path='/new-warehouse' element={<AddEditWarehouse />} />
+          <Route path='/warehouse/:warehouseId/edit' element={<AddEditWarehouse />} />
+          <Route path='/new-inventory-item' element={<AddEditInventoryItem />} />
+          <Route path='/inventory/:inventoryId/edit' element={<AddEditInventoryItem />} />
+          <Route path='/warehouse/:warehouseId/inventory/:inventoryId/edit' element={<AddEditInventoryItem />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>

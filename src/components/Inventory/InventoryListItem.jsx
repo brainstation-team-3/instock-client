@@ -14,8 +14,9 @@ export default function InventoryListItem({ item, onDelete, setCurrentInventoryI
     onDelete(true)
   }
   return (
-    <div key={id} className={`grid grid-cols-2 border-b bg-white px-6 py-8 shadow-md border-instock-cloud md:grid-cols-6
-    last:rounded-b-md md:items-center md:gap-4 md:px-10 md:last:border-b-0`}
+    <div key={id}
+         className={`grid grid-cols-2 border-b bg-white px-6 py-8 shadow-md border-instock-cloud ${warehouse ? 'md:grid-cols-5' : 'md:grid-cols-6'} 
+    last:rounded-b-md md:items-center md:gap-4 md:px-10 md:last:border-b-0 ${warehouse ? '[&>*:nth-child(4)]:md:ml-28' : ''}`}
     >
       <div className='mb-4 md:mb-0 md:col-start-1'>
         <p className='text-sm font-bold uppercase text-instock-slate md:hidden'>inventory item</p>
@@ -42,12 +43,12 @@ export default function InventoryListItem({ item, onDelete, setCurrentInventoryI
         <p className='text-sm font-bold uppercase text-instock-slate md:hidden'>qty</p>
         <p className='capitalize'>{format(quantity)}</p>
       </div>
-      <div className='col-start-2 mb-4 break-words md:mb-0 md:col-start-5'>
+      <div className={`${warehouse ? 'hidden' : ''} col-start-2 mb-4 break-words md:mb-0 md:col-start-5`}>
         <p className='text-sm font-bold uppercase text-instock-slate md:hidden'>warehouse</p>
         <p>{warehouse_name || warehouse}</p>
       </div>
       <div
-        className='col-span-2 flex items-center justify-between md:col-span-1 md:mr-2 md:mb-0 md:justify-end md:gap-4 md:col-start-6'>
+        className={`col-span-2 flex items-center justify-between md:col-span-1 md:mr-2 md:mb-0 md:justify-end md:gap-4 ${warehouse ? 'md:col-start-5' : 'md:col-start-6'}`}>
         <img onClick={deleteHandler}
              className='cursor-pointer md:w-7'
              src={deleteIcon}

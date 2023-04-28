@@ -1,4 +1,4 @@
-import { useNavigate, Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import editIcon from '@/assets/icons/edit-24px.svg'
 import deleteIcon from '@/assets/icons/delete_outline-24px.svg'
 import chevron from '@/assets/icons/chevron_right-24px.svg'
@@ -15,7 +15,7 @@ function WarehouseListItem({ item, onDelete, setCurrentWarehouse }) {
 
   return (
     <div key={id} className='grid grid-cols-2 border-b bg-white px-6 py-8 shadow-md border-instock-cloud
-                             last:rounded-b-md md:grid-cols-5 md:items-center md:px-10 md:last:border-b-0'>
+                             last:rounded-b-md md:grid-cols-5 md:items-center md:px-10 md:last:border-b-0 '>
       <div className='mb-4 md:mb-0'>
         <p className='text-sm font-bold uppercase text-instock-slate md:hidden'>warehouse</p>
         <Link to={`/warehouse/${id}`}>

@@ -4,9 +4,10 @@ import ItemDetails from '@components/Inventory/ItemDetails'
 import ItemAvailability from '@components/Inventory/ItemAvailability.jsx'
 import {
   createInventoryItem,
+  editInventoryItem,
   getCategoryNames,
+  getInventoryItem,
   getWarehouseNames,
-  getInventoryItem, editInventoryItem,
 } from '@utils/helpers'
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
 

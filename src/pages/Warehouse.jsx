@@ -51,7 +51,7 @@ function Warehouse() {
             + Add New Warehouse
           </Link>
         </div>
-        <WarehouseList warehouseList={warehouseList} onDelete={setIsOpen} setCurrentWarehouse={setCurrentWarehouse}/>
+        <WarehouseList warehouseList={warehouseList} onDelete={setIsOpen} setCurrentWarehouse={setCurrentWarehouse} />
       </div>
     </div>
   )

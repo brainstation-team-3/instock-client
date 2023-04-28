@@ -7,7 +7,7 @@ import NavLinks from './links.json'
 export default function NavBar() {
 
   const [ActiveLink, setActiveLink] = useState('warehouse')
-  
+
   return (
     <header className='pt-1 pb-20 md:pb-32 bg-instock-graphite'>
       <nav className='flex flex-col items-center justify-between gap-4 py-4 section md:flex-row'>
