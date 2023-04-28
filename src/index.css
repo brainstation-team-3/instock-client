@@ -1,69 +1,69 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer base {
+  @font-face {
+    font-family: 'Titillium Web';
+    font-weight: 400;
+    font-style: normal;
+    src: url('@/assets/fonts/TitilliumWeb-Regular.ttf') format('truetype');
   }
-  a:hover {
-    color: #747bff;
+  @font-face {
+    font-family: 'Titillium Web';
+    font-weight: 600;
+    font-style: normal;
+    src: url('@/assets/fonts/TitilliumWeb-SemiBold.ttf') format('truetype');
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+/* Helper classes */
+@layer components {
+  .section {
+    @apply my-0 mx-4 md:mx-8 xl:mx-auto xl:max-w-7xl
   }
+
+  .page-header {
+    @apply text-3xl leading-9 md:text-[2rem] md:leading-10 font-semibold text-instock-black
+  }
+
+  .subheader {
+    @apply text-xl leading-7 md:text-2xl md:leading-8 font-semibold text-instock-black
+  }
+
+  .label-btn {
+    @apply text-[0.813rem] leading-5 md:text-sm md:leading-[1.375rem] font-semibold
+  }
+
+  .table-header {
+    @apply text-[0.688rem] leading-4 md:text-xs md:leading-[1.125rem] font-normal text-instock-slate uppercase
+  }
+
+  .body-large {
+    @apply text-[0.938rem] leading-[1.625rem] md:text-base md:leading-7 font-normal text-instock-black
+  }
+
+  .body-med {
+    @apply text-[0.813rem] leading-5 md:text-sm md:leading-[1.375rem] font-normal text-instock-black
+  }
+
+  .body-sm {
+    @apply text-[0.688rem] leading-4 md:text-xs md:leading-[1.125rem] font-normal text-instock-black
+  }
+
+  .input-text {
+    @apply text-[0.813rem] md:text-sm font-normal text-instock-black
+  }
+
+  .btn-primary {
+    @apply label-btn w-1/2 py-2 rounded-full bg-instock-indigo capitalize text-instock-white
+    hover:bg-instock-graphite md:w-36 md:px-4 md:mr-8 duration-300 ease-in-out whitespace-nowrap
+  }
+
+  .btn-alternate {
+    @apply label-btn w-1/2 border rounded-full text-instock-cloud hover:border-instock-indigo
+    py-2 hover:text-instock-indigo md:w-28 md:px-4 duration-300 ease-in-out
+  }
+
 }
