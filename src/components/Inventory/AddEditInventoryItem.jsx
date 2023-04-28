@@ -19,8 +19,6 @@ export default function AddEditInventoryItem() {
   const [warehouseList, setWarehouseList] = useState([])
   const [categoryList, setCategoryList] = useState([])
 
-  const [selectedWarehouseId, setSelectedWarehouseId] = useState('')
-
   const [itemName, setItemName] = useState('')
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')
@@ -31,7 +29,6 @@ export default function AddEditInventoryItem() {
 
   const findWarehouseId = (name, warehouseList) => {
     const clickedWarehouse = warehouseList.find((item) => item.warehouseName === name)
-    setSelectedWarehouseId(clickedWarehouse.id)
     return clickedWarehouse.id
   }
 
