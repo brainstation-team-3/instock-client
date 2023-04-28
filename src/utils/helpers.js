@@ -38,7 +38,7 @@ export async function editWarehouse(id, data) {
   try {
     const response = await axios.put(`${routes.warehouse}/${id}`, data);
     if (response.status === 200) {
-      return response.data
+      return response
     }
   } catch (error) {
     console.log(error)
@@ -82,7 +82,18 @@ export async function createInventoryItem(data) {
   try {
     const response = await axios.post(routes.inventory, data);
     if (response.status === 201) {
-      return response.data
+      return response
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function editInventoryItem(id, data) {
+  try {
+    const response = await axios.put(`${routes.inventory}/${id}`, data);
+    if (response.status === 200) {
+      return response
     }
   } catch (error) {
     console.log(error)
@@ -125,6 +136,17 @@ export async function getWarehouseNames() {
 
     return [...new Set(allWarehouses)]
 
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getInventoryItemsByWarehouse(id) {
+  try {
+    const response = await axios.get(`${routes.warehouse}/${id}/inventory`);
+    if (response.status === 200) {
+      return response.data
+    }
   } catch (error) {
     console.log(error)
   }

@@ -53,7 +53,7 @@ export default function AddEditWarehouse() {
     <>
       <div className="mx-4 rounded-md bg-white shadow-md mt-[-4.2rem] md:mt-[-6rem] md:mx-8 xl:mx-auto xl:max-w-7xl">
         <div className="inline-flex w-full border-b pt-8 pb-6 pl-4 md:pl-12 justify-left border-instock-cloud">
-          <img className='cursor-pointer' src={ArrowBackIcon} alt="back-arrow" onClick={() => navigate('/warehouse')}/>
+          <img className='cursor-pointer' src={ArrowBackIcon} alt="back-arrow" onClick={() => navigate(-1)}/>
           <h3 className="pl-2 capitalize page-header">
             {warehouseId ? 'edit warehouse' : 'add new warehouse'}
           </h3>

@@ -6,7 +6,7 @@ import {
   createInventoryItem,
   getCategoryNames,
   getWarehouseNames,
-  getInventoryItem,
+  getInventoryItem, editInventoryItem,
 } from '@utils/helpers'
 import ArrowBackIcon from '@assets/icons/arrow_back-24px.svg'
 
@@ -15,10 +15,9 @@ export default function AddEditInventoryItem() {
   const { inventoryId } = useParams()
   const navigate = useNavigate()
 
+  const [loading, setLoading] = useState(true)
   const [warehouseList, setWarehouseList] = useState([])
   const [categoryList, setCategoryList] = useState([])
-
-  const [warehouseId, setWarehouseId] = useState('')
 
   const [itemName, setItemName] = useState('')
   const [description, setDescription] = useState('')
@@ -30,7 +29,6 @@ export default function AddEditInventoryItem() {
 
   const findWarehouseId = (name, warehouseList) => {
     const clickedWarehouse = warehouseList.find((item) => item.warehouseName === name)
-    setWarehouseId(clickedWarehouse.id)
     return clickedWarehouse.id
   }
 
@@ -40,12 +38,14 @@ export default function AddEditInventoryItem() {
     setCategory('Please select')
 
     setStatus('in stock')
-    setQuantity(0)
+    setQuantity('0')
     setWarehouse('Please select')
   }
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault()
+
+    const warehouseId = await findWarehouseId(warehouse, warehouseList)
 
     const data = {
       'warehouse_id': warehouseId,
@@ -56,11 +56,18 @@ export default function AddEditInventoryItem() {
       'quantity': Number(quantity),
     }
 
-    createInventoryItem(data)
-      .then((res) => {
-        if (res.status === 200) resetForm()
-      })
-      .catch(err => console.log(err.message))
+    try {
+      inventoryId
+        ? await editInventoryItem(inventoryId, data)
+        : await createInventoryItem(data)
+
+      resetForm()
+      navigate(-1)
+
+    } catch (err) {
+      console.error(err.message)
+    }
+
   }
 
   useEffect(() => {
@@ -85,15 +92,18 @@ export default function AddEditInventoryItem() {
 
     getWarehouseNames().then((data) => {
       setWarehouseList(data)
+      setLoading(false)
     })
 
   }, [])
+
+  if (loading) return <div>Loading...</div>
 
   return (
     <>
       <div className='mx-4 rounded-md bg-white shadow-md mt-[-4.2rem] md:mt-[-6rem] md:mx-8 xl:mx-auto xl:max-w-7xl'>
         <div className='flex w-full border-b pt-8 pb-6 pl-4 justify-left border-status-cloud md:pl-10'>
-          <img className='cursor-pointer' src={ArrowBackIcon} alt='back-arrow' onClick={() => navigate('/inventory')} />
+          <img className='cursor-pointer' src={ArrowBackIcon} alt='back-arrow' onClick={() => navigate(-1)} />
           <h3 className='pl-2 page-header capitalize'>
             {inventoryId ? 'edit inventory item' : 'add new inventory item'}
           </h3>
@@ -124,7 +134,7 @@ export default function AddEditInventoryItem() {
             <div className='flex w-full items-center gap-4 px-4 py-4 bg-instock-light-grey md:justify-end'>
               <button
                 type='reset'
-                onClick={() => navigate('/inventory')}
+                onClick={() => navigate(-1)}
                 className='btn-alternate'
               >
                 Cancel

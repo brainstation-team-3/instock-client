@@ -19,7 +19,7 @@ function Warehouse() {
       setLoading(false)
     })
 
-  }, [warehouseList])
+  }, [])
 
   const closeModal = () => {
     setIsOpen(false)
